@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+export const dynamic = 'force-dynamic';
+
+import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -10,6 +12,14 @@ import { truncate } from '@/lib/utils';
 import { HiOutlineSearch, HiOutlineThumbUp, HiOutlineChatAlt2, HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
 export default function IdeasPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-[50vh]"><div className="w-10 h-10 border-3 border-primary-500/30 border-t-primary-500 rounded-full animate-spin" /></div>}>
+      <IdeasContent />
+    </Suspense>
+  );
+}
+
+function IdeasContent() {
   const searchParams = useSearchParams();
   const [ideas, setIdeas] = useState<Idea[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);

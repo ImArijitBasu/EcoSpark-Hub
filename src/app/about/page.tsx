@@ -1,13 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { HiOutlineGlobe, HiOutlineHeart, HiOutlineLightBulb, HiOutlineUsers } from 'react-icons/hi';
+import { HiOutlineGlobe, HiOutlineShieldCheck, HiOutlineLightBulb, HiOutlineUsers } from 'react-icons/hi';
 
 const values = [
   { icon: HiOutlineGlobe, title: 'Environmental Impact', desc: 'Every idea shared has the potential to reduce our carbon footprint and protect natural resources.' },
   { icon: HiOutlineLightBulb, title: 'Innovation First', desc: 'We believe in the power of creative thinking to solve the world\'s most pressing environmental challenges.' },
   { icon: HiOutlineUsers, title: 'Community Driven', desc: 'Our platform thrives on the collective wisdom and passion of our diverse community members.' },
-  { icon: HiOutlineHeart, title: 'Transparency', desc: 'Open voting, honest feedback, and transparent moderation ensure every voice is heard fairly.' },
+  { icon: HiOutlineShieldCheck, title: 'Transparency', desc: 'Open voting, honest feedback, and transparent moderation ensure every voice is heard fairly.' },
 ];
 
 const team = [
