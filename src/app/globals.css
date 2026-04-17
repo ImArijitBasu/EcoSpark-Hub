@@ -178,57 +178,59 @@ body {
   animation: pulseGlow 2s ease-in-out infinite;
 }
 
-/* ── Button Styles ─────────────────────────── */
-.btn-primary {
-  background: linear-gradient(135deg, #059669, #10b981);
-  color: white;
-  font-weight: 600;
-  padding: 0.625rem 1.5rem;
-  border-radius: 0.75rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
+/* ── UI Components ─────────────────────────── */
+@layer components {
+  .btn-primary {
+    background: linear-gradient(135deg, #059669, #10b981);
+    color: white;
+    font-weight: 600;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
 
-.btn-primary:hover {
-  background: linear-gradient(135deg, #047857, #059669);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-  transform: translateY(-1px);
-}
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #047857, #059669);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    transform: translateY(-1px);
+  }
 
-.btn-secondary {
-  background: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
-  font-weight: 500;
-  padding: 0.625rem 1.5rem;
-  border-radius: 0.75rem;
-  transition: all 0.3s ease;
-  border: 1px solid var(--btn-secondary-border);
-}
+  .btn-secondary {
+    background: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    font-weight: 500;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--btn-secondary-border);
+  }
 
-.btn-secondary:hover {
-  background: var(--btn-secondary-hover);
-  border-color: rgba(148, 163, 184, 0.3);
-}
+  .btn-secondary:hover {
+    background: var(--btn-secondary-hover);
+    border-color: rgba(148, 163, 184, 0.3);
+  }
 
-/* ── Input Styles ──────────────────────────── */
-.input-glass {
-  background: var(--input-bg);
-  border: 1px solid var(--btn-secondary-border);
-  border-radius: 0.75rem;
-  color: var(--text-primary);
-  padding: 0.75rem 1rem;
-  transition: all 0.3s ease;
-  width: 100%;
-}
+  /* ── Input Styles ──────────────────────────── */
+  .input-glass {
+    background: var(--input-bg);
+    border: 1px solid var(--btn-secondary-border);
+    border-radius: 0.75rem;
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
 
-.input-glass:focus {
-  outline: none;
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
-}
+  .input-glass:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  }
 
-.input-glass::placeholder {
-  color: var(--text-secondary);
+  .input-glass::placeholder {
+    color: var(--text-secondary);
+  }
 }
 
 /* ── Card hover ────────────────────────────── */
