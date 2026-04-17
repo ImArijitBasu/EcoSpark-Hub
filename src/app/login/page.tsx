@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
-import { HiOutlineMail, HiOutlineLockClosed, HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
+import { HiOutlineMail, HiOutlineLockClosed, HiOutlineEye, HiOutlineEyeOff, HiLightningBolt } from 'react-icons/hi';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -34,95 +34,135 @@ export default function LoginPage() {
     }
   };
 
+  const handleAutofillAdmin = () => {
+    setEmail('admin@ecosparkhub.com');
+    setPassword('Admin@123456');
+    toast.success('Admin credentials autofilled!');
+  };
+
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="w-full max-w-md"
-      >
-        <div className="glass rounded-3xl p-8 sm:p-10 glow-emerald-sm">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-dark-900 dark:text-white">
-              E
+    <div className="min-h-[calc(100vh-5rem)] flex items-stretch">
+      {/* Left Pane - Branding Asset */}
+      <div className="hidden lg:flex w-1/2 relative bg-dark-900 overflow-hidden items-center justify-center p-12">
+        <div className="absolute inset-0 hero-gradient opacity-80" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+        
+        <div className="relative z-10 max-w-lg">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="w-16 h-16 rounded-2xl glass-light flex items-center justify-center mb-8 border border-white/10 shadow-2xl">
+              <HiLightningBolt className="w-8 h-8 text-primary-400" />
             </div>
-            <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white">
-              Welcome Back
-            </h1>
-            <p className="text-dark-600 dark:text-dark-400 text-sm mt-1">Sign in to continue to EcoSpark Hub</p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Email */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">
-                Email Address
-              </label>
-              <div className="relative">
-                <HiOutlineMail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  className="input-glass pl-10"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Password */}
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">
-                Password
-              </label>
-              <div className="relative">
-                <HiOutlineLockClosed className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
-                <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="input-glass pl-10 pr-10"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-dark-500 hover:text-dark-300 transition-colors cursor-pointer"
-                >
-                  {showPassword ? <HiOutlineEyeOff className="w-5 h-5" /> : <HiOutlineEye className="w-5 h-5" />}
-                </button>
-              </div>
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary w-full py-3 text-center flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
-            >
-              {loading ? (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              ) : (
-                'Sign In'
-              )}
-            </button>
-          </form>
-
-          {/* Footer */}
-          <p className="text-center text-sm text-dark-600 dark:text-dark-400 mt-6">
-            Don&apos;t have an account?{' '}
-            <Link href="/register" className="text-primary-400 hover:text-primary-300 font-medium transition-colors">
-              Create one
-            </Link>
-          </p>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight font-[family-name:var(--font-heading)]">
+              Ignite the Green <span className="text-primary-400">Revolution.</span>
+            </h2>
+            <p className="text-lg text-white/70 leading-relaxed">
+              Step into the central hub of sustainability. Your ideas and actions today define the world we inherit tomorrow. Log in to continue your journey.
+            </p>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
+
+      {/* Right Pane - Auth Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-md"
+        >
+          <div className="glass rounded-3xl p-8 sm:p-10 shadow-2xl">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <h1 className="text-3xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white">
+                Welcome Back
+              </h1>
+              <p className="text-dark-600 dark:text-dark-400 text-sm mt-2">Sign in to your EcoSpark account</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Email */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <HiOutlineMail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
+                  <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    className="input-glass pl-10"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Password */}
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">
+                  Password
+                </label>
+                <div className="relative">
+                  <HiOutlineLockClosed className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
+                  <input
+                    id="password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="input-glass pl-10 pr-10"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-dark-500 hover:text-dark-300 transition-colors cursor-pointer"
+                  >
+                    {showPassword ? <HiOutlineEyeOff className="w-5 h-5" /> : <HiOutlineEye className="w-5 h-5" />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary w-full py-3.5 text-center flex items-center justify-center gap-2 mt-4 disabled:opacity-50 cursor-pointer text-base"
+              >
+                {loading ? (
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                ) : (
+                  'Sign In'
+                )}
+              </button>
+            </form>
+
+            <div className="flex flex-col items-center gap-4 mt-8 pt-6 border-t border-dark-200 dark:border-white/10">
+              <button 
+                type="button" 
+                onClick={handleAutofillAdmin}
+                className="text-sm font-semibold text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 transition-colors cursor-pointer flex items-center gap-2"
+              >
+                <HiLightningBolt className="w-4 h-4" /> Autofill Admin Credentials
+              </button>
+              
+              <p className="text-center text-sm text-dark-600 dark:text-dark-400">
+                Don&apos;t have an account?{' '}
+                <Link href="/register" className="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-bold transition-colors">
+                  Create one
+                </Link>
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }
