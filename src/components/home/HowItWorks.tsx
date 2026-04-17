@@ -32,7 +32,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-28 lg:py-40 relative overflow-hidden">
       {/* Subtle glow */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl" />
 

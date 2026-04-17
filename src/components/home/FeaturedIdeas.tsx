@@ -28,7 +28,7 @@ export default function FeaturedIdeas() {
   };
 
   return (
-    <section className="py-24 relative">
+    <section className="py-28 lg:py-40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

@@ -28,7 +28,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section id="newsletter" className="py-24 relative overflow-hidden">
+    <section id="newsletter" className="py-28 lg:py-40 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

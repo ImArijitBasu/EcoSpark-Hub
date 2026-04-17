@@ -9,7 +9,7 @@ export default function CallToAction() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-28 lg:py-40 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

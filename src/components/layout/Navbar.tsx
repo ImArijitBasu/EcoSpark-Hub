@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { HiOutlineMenu, HiOutlineX, HiOutlineUser, HiOutlineLogout, HiOutlineViewGrid } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -26,7 +27,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center font-bold text-white text-lg shadow-lg">
@@ -47,8 +48,8 @@ export default function Navbar() {
                 className={cn(
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
                   pathname === link.href
-                    ? 'text-primary-400 bg-primary-500/10'
-                    : 'text-dark-300 hover:text-white hover:bg-white/5'
+                    ? 'text-primary-500 dark:text-primary-400 bg-primary-500/10'
+                    : 'text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-white hover:bg-dark-100 dark:hover:bg-white/5'
                 )}
               >
                 {link.label}
@@ -58,7 +59,8 @@ export default function Navbar() {
           </div>
 
           {/* Right Side */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             {isAuthenticated ? (
               <div className="relative">
                 <button
@@ -132,12 +134,15 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden p-2 text-dark-300 hover:text-white transition-colors cursor-pointer"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <HiOutlineX className="w-6 h-6" /> : <HiOutlineMenu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              className="p-2 text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-white transition-colors cursor-pointer"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <HiOutlineX className="w-6 h-6" /> : <HiOutlineMenu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -159,8 +164,8 @@ export default function Navbar() {
                   className={cn(
                     'block px-4 py-3 rounded-xl text-sm font-medium transition-colors',
                     pathname === link.href
-                      ? 'text-primary-400 bg-primary-500/10'
-                      : 'text-dark-300 hover:text-white hover:bg-white/5'
+                      ? 'text-primary-500 dark:text-primary-400 bg-primary-500/10'
+                      : 'text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-white hover:bg-dark-100 dark:hover:bg-white/5'
                   )}
                 >
                   {link.label}
