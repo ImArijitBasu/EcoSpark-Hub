@@ -54,11 +54,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <aside className="hidden lg:flex w-64 flex-col glass border-r border-white/5 fixed top-16 bottom-0 left-0 z-40">
         <div className="p-4 border-b border-white/5">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center text-dark-900 dark:text-white font-bold">
               {user?.name?.charAt(0)}
             </div>
             <div>
-              <p className="text-sm font-semibold text-white">{user?.name}</p>
+              <p className="text-sm font-semibold text-dark-900 dark:text-white">{user?.name}</p>
               <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-400">
                 {user?.role}
               </span>
@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 'flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all',
                 pathname === link.href
                   ? 'bg-primary-500/15 text-primary-400 border border-primary-500/20'
-                  : 'text-dark-400 hover:text-white hover:bg-white/5'
+                  : 'text-dark-600 dark:text-dark-400 hover:text-white hover:bg-white/5'
               )}
             >
               <link.icon className="w-5 h-5" />

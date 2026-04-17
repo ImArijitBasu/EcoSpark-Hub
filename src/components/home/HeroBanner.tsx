@@ -44,7 +44,7 @@ export default function HeroBanner() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-light mb-8 text-sm"
         >
           <HiOutlineSparkles className="w-4 h-4 text-accent-400" />
-          <span className="text-dark-300">Community-Powered Sustainability</span>
+          <span className="text-dark-600 dark:text-dark-300">Community-Powered Sustainability</span>
         </motion.div>
 
         {/* Heading */}
@@ -54,7 +54,7 @@ export default function HeroBanner() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-7xl font-extrabold font-[family-name:var(--font-heading)] leading-tight mb-6"
         >
-          <span className="text-white">Spark the Future</span>
+          <span className="text-dark-900 dark:text-white">Spark the Future</span>
           <br />
           <span className="gradient-text">of Sustainability</span>
         </motion.h1>
@@ -64,7 +64,7 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg sm:text-xl text-dark-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-lg sm:text-xl text-dark-600 dark:text-dark-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Share eco-friendly ideas, vote on groundbreaking projects, and join a community
           dedicated to building a greener world — one idea at a time.
@@ -85,7 +85,7 @@ export default function HeroBanner() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search ideas by name, category, or keyword..."
-              className="w-full pl-12 pr-32 py-4 rounded-2xl glass text-white text-base placeholder:text-dark-500 focus:outline-none focus:border-primary-500/50 focus:ring-2 focus:ring-primary-500/20 transition-all"
+              className="w-full pl-12 pr-32 py-4 rounded-2xl glass text-dark-900 dark:text-white text-base placeholder:text-dark-500 focus:outline-none focus:border-primary-500/50 focus:ring-2 focus:ring-primary-500/20 transition-all"
             />
             <button
               type="submit"
@@ -108,8 +108,8 @@ export default function HeroBanner() {
               <HiLightningBolt className="w-6 h-6 text-primary-400" />
             </div>
             <div className="text-left">
-              <p className="text-2xl font-bold text-white">500+</p>
-              <p className="text-xs text-dark-400">Ideas Shared</p>
+              <p className="text-2xl font-bold text-dark-900 dark:text-white">500+</p>
+              <p className="text-xs text-dark-600 dark:text-dark-400">Ideas Shared</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -117,8 +117,8 @@ export default function HeroBanner() {
               <HiOutlineGlobe className="w-6 h-6 text-accent-400" />
             </div>
             <div className="text-left">
-              <p className="text-2xl font-bold text-white">1.2K+</p>
-              <p className="text-xs text-dark-400">Community Members</p>
+              <p className="text-2xl font-bold text-dark-900 dark:text-white">1.2K+</p>
+              <p className="text-xs text-dark-600 dark:text-dark-400">Community Members</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -126,8 +126,8 @@ export default function HeroBanner() {
               <HiOutlineSparkles className="w-6 h-6 text-primary-400" />
             </div>
             <div className="text-left">
-              <p className="text-2xl font-bold text-white">50+</p>
-              <p className="text-xs text-dark-400">Projects Launched</p>
+              <p className="text-2xl font-bold text-dark-900 dark:text-white">50+</p>
+              <p className="text-xs text-dark-600 dark:text-dark-400">Projects Launched</p>
             </div>
           </div>
         </motion.div>

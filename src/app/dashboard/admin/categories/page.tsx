@@ -69,7 +69,7 @@ export default function AdminCategoriesPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white">Manage Categories</h1>
+        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white">Manage Categories</h1>
         <button onClick={openCreate} className="btn-primary text-sm flex items-center gap-2 cursor-pointer">
           <HiOutlinePlus className="w-4 h-4" /> New Category
         </button>
@@ -79,7 +79,7 @@ export default function AdminCategoriesPage() {
         <div className="space-y-3">{[...Array(4)].map((_, i) => <div key={i} className="glass rounded-xl p-5 h-16 animate-pulse" />)}</div>
       ) : categories.length === 0 ? (
         <div className="text-center py-16 glass rounded-2xl">
-          <p className="text-dark-400">No categories yet. Create your first one!</p>
+          <p className="text-dark-600 dark:text-dark-400">No categories yet. Create your first one!</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -88,16 +88,16 @@ export default function AdminCategoriesPage() {
               <div className="flex items-start gap-3">
                 <span className="text-2xl">{cat.icon || '📂'}</span>
                 <div>
-                  <h3 className="text-sm font-semibold text-white">{cat.name}</h3>
+                  <h3 className="text-sm font-semibold text-dark-900 dark:text-white">{cat.name}</h3>
                   <p className="text-xs text-dark-500 mt-0.5">{cat.description || 'No description'}</p>
                   <p className="text-xs text-primary-400 mt-1">{cat._count?.ideas || 0} ideas</p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
-                <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg text-dark-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer">
+                <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg text-dark-600 dark:text-dark-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer">
                   <HiOutlinePencil className="w-4 h-4" />
                 </button>
-                <button onClick={() => handleDelete(cat.id)} className="p-1.5 rounded-lg text-dark-400 hover:text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer">
+                <button onClick={() => handleDelete(cat.id)} className="p-1.5 rounded-lg text-dark-600 dark:text-dark-400 hover:text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer">
                   <HiOutlineTrash className="w-4 h-4" />
                 </button>
               </div>
@@ -111,25 +111,25 @@ export default function AdminCategoriesPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className="glass rounded-2xl p-6 w-full max-w-md">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className="text-lg font-semibold text-dark-900 dark:text-white">
                 {modal === 'create' ? 'New Category' : 'Edit Category'}
               </h3>
-              <button onClick={() => setModal(null)} className="text-dark-400 hover:text-white cursor-pointer">
+              <button onClick={() => setModal(null)} className="text-dark-600 dark:text-dark-400 hover:text-white cursor-pointer">
                 <HiOutlineX className="w-5 h-5" />
               </button>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-dark-300 mb-1.5">Name *</label>
+                <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Name *</label>
                 <input value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="input-glass" placeholder="e.g. Energy" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-dark-300 mb-1.5">Description</label>
+                <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Description</label>
                 <textarea value={form.description} onChange={e => setForm({...form, description: e.target.value})} rows={2} className="input-glass resize-none" placeholder="Brief description..." />
               </div>
               <div>
-                <label className="block text-sm font-medium text-dark-300 mb-1.5">Icon (emoji)</label>
+                <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Icon (emoji)</label>
                 <input value={form.icon} onChange={e => setForm({...form, icon: e.target.value})} className="input-glass" placeholder="⚡" />
               </div>
             </div>

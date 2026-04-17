@@ -81,10 +81,10 @@ function IdeasContent() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-white mb-2">
+          <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-2">
             Explore Ideas
           </h1>
-          <p className="text-dark-400">
+          <p className="text-dark-600 dark:text-dark-400">
             {total > 0 ? `${total} sustainability ideas shared by our community` : 'Discover eco-friendly ideas from our community'}
           </p>
         </motion.div>
@@ -161,25 +161,25 @@ function IdeasContent() {
                             <span className="text-5xl">🌿</span>
                           </div>
                         )}
-                        <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold bg-primary-500/90 text-white backdrop-blur-sm">
+                        <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold bg-primary-500/90 text-dark-900 dark:text-white backdrop-blur-sm">
                           {idea.category.name}
                         </span>
                         {idea.isPaid && (
-                          <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/90 text-white backdrop-blur-sm">
+                          <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/90 text-dark-900 dark:text-white backdrop-blur-sm">
                             💎 ${idea.price}
                           </span>
                         )}
                       </div>
 
                       <div className="p-5">
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-primary-400 transition-colors line-clamp-2">
+                        <h3 className="text-lg font-semibold text-dark-900 dark:text-white mb-2 group-hover:text-primary-400 transition-colors line-clamp-2">
                           {idea.title}
                         </h3>
-                        <p className="text-sm text-dark-400 mb-4 line-clamp-2">{truncate(idea.description, 100)}</p>
+                        <p className="text-sm text-dark-600 dark:text-dark-400 mb-4 line-clamp-2">{truncate(idea.description, 100)}</p>
 
                         <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                          <div className="flex items-center gap-2 text-sm text-dark-400">
-                            <span className="w-6 h-6 rounded-full gradient-primary flex items-center justify-center text-white text-xs font-semibold">
+                          <div className="flex items-center gap-2 text-sm text-dark-600 dark:text-dark-400">
+                            <span className="w-6 h-6 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-xs font-semibold">
                               {idea.author.name.charAt(0)}
                             </span>
                             <span>{idea.author.name}</span>
@@ -214,7 +214,7 @@ function IdeasContent() {
                       key={p}
                       onClick={() => setPage(p)}
                       className={`w-10 h-10 rounded-xl text-sm font-medium transition-all cursor-pointer ${
-                        page === p ? 'gradient-primary text-white' : 'btn-secondary'
+                        page === p ? 'gradient-primary text-dark-900 dark:text-white' : 'btn-secondary'
                       }`}
                     >
                       {p}
@@ -234,8 +234,8 @@ function IdeasContent() {
         ) : (
           <div className="text-center py-20 glass rounded-2xl">
             <span className="text-5xl mb-4 block">🔍</span>
-            <h3 className="text-xl font-semibold text-white mb-2">No ideas found</h3>
-            <p className="text-dark-400">Try adjusting your search or filters</p>
+            <h3 className="text-xl font-semibold text-dark-900 dark:text-white mb-2">No ideas found</h3>
+            <p className="text-dark-600 dark:text-dark-400">Try adjusting your search or filters</p>
           </div>
         )}
       </div>

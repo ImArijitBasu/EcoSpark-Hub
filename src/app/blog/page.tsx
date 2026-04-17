@@ -55,10 +55,10 @@ export default function BlogPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
           <span className="text-primary-400 text-sm font-semibold uppercase tracking-wider">Our Blog</span>
-          <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-white mt-2 mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mt-2 mb-4">
             Insights & Stories
           </h1>
-          <p className="text-dark-400 max-w-xl">
+          <p className="text-dark-600 dark:text-dark-400 max-w-xl">
             Latest articles on sustainability, eco-innovation, and community impact.
           </p>
         </motion.div>
@@ -81,10 +81,10 @@ export default function BlogPage() {
                   <HiOutlineClock className="w-3 h-3" />{post.readTime}
                 </span>
               </div>
-              <h2 className="text-lg font-semibold text-white mb-2 group-hover:text-primary-400 transition-colors line-clamp-2">
+              <h2 className="text-lg font-semibold text-dark-900 dark:text-white mb-2 group-hover:text-primary-400 transition-colors line-clamp-2">
                 {post.title}
               </h2>
-              <p className="text-sm text-dark-400 mb-4 line-clamp-2">{post.excerpt}</p>
+              <p className="text-sm text-dark-600 dark:text-dark-400 mb-4 line-clamp-2">{post.excerpt}</p>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-dark-500">{post.date}</span>
                 <span className="text-sm text-primary-400 flex items-center gap-1 group-hover:gap-2 transition-all">

@@ -36,10 +36,10 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <span className="text-accent-400 text-sm font-semibold uppercase tracking-wider">Community Favorites</span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-white mt-2 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mt-2 mb-4">
             Top Voted Ideas
           </h2>
-          <p className="text-dark-400 max-w-xl mx-auto">
+          <p className="text-dark-600 dark:text-dark-400 max-w-xl mx-auto">
             The ideas that received the most love from our community members.
           </p>
         </motion.div>
@@ -60,7 +60,7 @@ export default function Testimonials() {
               <div className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${
                 index === 0
                   ? 'bg-accent-500/20 text-accent-400 border border-accent-500/30'
-                  : 'bg-dark-700/50 text-dark-400 border border-white/10'
+                  : 'bg-dark-700/50 text-dark-600 dark:text-dark-400 border border-white/10'
               }`}>
                 #{index + 1}
               </div>
@@ -75,13 +75,13 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2">{idea.title}</h3>
-              <p className="text-sm text-dark-400 mb-4 line-clamp-3">{idea.description}</p>
+              <h3 className="text-lg font-semibold text-dark-900 dark:text-white mb-2 line-clamp-2">{idea.title}</h3>
+              <p className="text-sm text-dark-600 dark:text-dark-400 mb-4 line-clamp-3">{idea.description}</p>
 
               {/* Author & Votes */}
               <div className="flex items-center justify-between pt-4 border-t border-white/5">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-white text-xs font-bold">
+                  <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-xs font-bold">
                     {idea.author.name.charAt(0)}
                   </div>
                   <div>

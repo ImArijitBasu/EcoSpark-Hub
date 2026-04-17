@@ -30,12 +30,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center font-bold text-white text-lg shadow-lg">
+            <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center font-bold text-dark-900 dark:text-white text-lg shadow-lg">
               E
             </div>
             <span className="text-xl font-bold font-[family-name:var(--font-heading)]">
               <span className="gradient-text">Eco</span>
-              <span className="text-white">Spark</span>
+              <span className="text-dark-900 dark:text-white">Spark</span>
             </span>
           </Link>
 
@@ -67,7 +67,7 @@ export default function Navbar() {
                   onClick={() => setProfileDropdown(!profileDropdown)}
                   className="flex items-center gap-2 px-3 py-2 rounded-xl glass-light hover:border-primary-500/30 transition-all cursor-pointer"
                 >
-                  <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-white text-sm font-semibold">
+                  <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-sm font-semibold">
                     {user?.name?.charAt(0).toUpperCase()}
                   </div>
                   <span className="text-sm font-medium text-dark-200">{user?.name}</span>
@@ -83,8 +83,8 @@ export default function Navbar() {
                       className="absolute right-0 mt-2 w-56 glass rounded-xl shadow-2xl overflow-hidden border border-white/10"
                     >
                       <div className="p-3 border-b border-white/5">
-                        <p className="text-sm font-semibold text-white">{user?.name}</p>
-                        <p className="text-xs text-dark-400">{user?.email}</p>
+                        <p className="text-sm font-semibold text-dark-900 dark:text-white">{user?.name}</p>
+                        <p className="text-xs text-dark-600 dark:text-dark-400">{user?.email}</p>
                         <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-400">
                           {user?.role}
                         </span>
@@ -93,7 +93,7 @@ export default function Navbar() {
                         <Link
                           href={dashboardLink}
                           onClick={() => setProfileDropdown(false)}
-                          className="flex items-center gap-2 px-3 py-2 text-sm text-dark-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                          className="flex items-center gap-2 px-3 py-2 text-sm text-dark-600 dark:text-dark-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                         >
                           <HiOutlineViewGrid className="w-4 h-4" />
                           Dashboard
@@ -101,7 +101,7 @@ export default function Navbar() {
                         <Link
                           href="/dashboard/member"
                           onClick={() => setProfileDropdown(false)}
-                          className="flex items-center gap-2 px-3 py-2 text-sm text-dark-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                          className="flex items-center gap-2 px-3 py-2 text-sm text-dark-600 dark:text-dark-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                         >
                           <HiOutlineUser className="w-4 h-4" />
                           My Profile

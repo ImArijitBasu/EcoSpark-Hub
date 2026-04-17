@@ -39,7 +39,7 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white mb-6">Admin Dashboard</h1>
+      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-6">Admin Dashboard</h1>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {statCards.map((stat) => (
@@ -47,8 +47,8 @@ export default function AdminDashboard() {
             <div className={`w-10 h-10 rounded-xl ${stat.bg} flex items-center justify-center mb-3`}>
               <stat.icon className={`w-5 h-5 ${stat.color}`} />
             </div>
-            <p className="text-2xl font-bold text-white">{loading ? '—' : stat.value}</p>
-            <p className="text-xs text-dark-400 mt-1">{stat.label}</p>
+            <p className="text-2xl font-bold text-dark-900 dark:text-white">{loading ? '—' : stat.value}</p>
+            <p className="text-xs text-dark-600 dark:text-dark-400 mt-1">{stat.label}</p>
           </div>
         ))}
       </div>

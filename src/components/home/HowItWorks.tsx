@@ -44,10 +44,10 @@ export default function HowItWorks() {
           className="text-center mb-16"
         >
           <span className="text-primary-400 text-sm font-semibold uppercase tracking-wider">Simple Process</span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-white mt-2 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mt-2 mb-4">
             How It Works
           </h2>
-          <p className="text-dark-400 max-w-xl mx-auto">
+          <p className="text-dark-600 dark:text-dark-400 max-w-xl mx-auto">
             From idea to impact in four simple steps. Anyone can contribute to a greener future.
           </p>
         </motion.div>
@@ -69,11 +69,11 @@ export default function HowItWorks() {
                 </span>
 
                 <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-5 group-hover:animate-pulse-glow transition-all">
-                  <item.icon className="w-7 h-7 text-white" />
+                  <item.icon className="w-7 h-7 text-dark-900 dark:text-white" />
                 </div>
 
-                <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-dark-400 leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-dark-900 dark:text-white mb-2">{item.title}</h3>
+                <p className="text-sm text-dark-600 dark:text-dark-400 leading-relaxed">{item.desc}</p>
               </div>
 
               {/* Connector line (hidden on last and mobile) */}

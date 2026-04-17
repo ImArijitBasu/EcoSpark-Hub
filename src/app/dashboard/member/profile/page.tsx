@@ -88,14 +88,14 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white mb-6">Account Settings</h1>
+      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-6">Account Settings</h1>
 
       {/* Tab Switcher */}
       <div className="flex gap-1 p-1 glass rounded-xl w-fit mb-8">
         <button
           onClick={() => setTab('profile')}
           className={`px-5 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
-            tab === 'profile' ? 'gradient-primary text-white' : 'text-dark-400 hover:text-white'
+            tab === 'profile' ? 'gradient-primary text-dark-900 dark:text-white' : 'text-dark-600 dark:text-dark-400 hover:text-white'
           }`}
         >
           Profile
@@ -103,7 +103,7 @@ export default function ProfilePage() {
         <button
           onClick={() => setTab('password')}
           className={`px-5 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
-            tab === 'password' ? 'gradient-primary text-white' : 'text-dark-400 hover:text-white'
+            tab === 'password' ? 'gradient-primary text-dark-900 dark:text-white' : 'text-dark-600 dark:text-dark-400 hover:text-white'
           }`}
         >
           Change Password
@@ -118,18 +118,18 @@ export default function ProfilePage() {
               {preview ? (
                 <img src={preview} alt="Avatar" className="w-20 h-20 rounded-2xl object-cover border-2 border-primary-500/30" />
               ) : (
-                <div className="w-20 h-20 rounded-2xl gradient-primary flex items-center justify-center text-white text-2xl font-bold">
+                <div className="w-20 h-20 rounded-2xl gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-2xl font-bold">
                   {user?.name?.charAt(0)}
                 </div>
               )}
               <label className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
-                <HiOutlinePhotograph className="w-6 h-6 text-white" />
+                <HiOutlinePhotograph className="w-6 h-6 text-dark-900 dark:text-white" />
                 <input type="file" accept="image/*" onChange={handleAvatarChange} className="hidden" />
               </label>
             </div>
             <div>
-              <p className="text-sm font-medium text-white">{user?.name}</p>
-              <p className="text-xs text-dark-400">{user?.email}</p>
+              <p className="text-sm font-medium text-dark-900 dark:text-white">{user?.name}</p>
+              <p className="text-xs text-dark-600 dark:text-dark-400">{user?.email}</p>
               <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-400">
                 {user?.role}
               </span>
@@ -138,7 +138,7 @@ export default function ProfilePage() {
 
           {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Full Name</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Full Name</label>
             <div className="relative">
               <HiOutlineUser className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
               <input value={name} onChange={(e) => setName(e.target.value)} className="input-glass pl-10" required />
@@ -147,7 +147,7 @@ export default function ProfilePage() {
 
           {/* Email (read-only) */}
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Email (cannot be changed)</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Email (cannot be changed)</label>
             <div className="relative">
               <HiOutlineMail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
               <input value={user?.email || ''} readOnly className="input-glass pl-10 opacity-50 cursor-not-allowed" />
@@ -161,7 +161,7 @@ export default function ProfilePage() {
       ) : (
         <form onSubmit={handlePasswordChange} className="glass rounded-2xl p-6 sm:p-8 max-w-xl space-y-6">
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Current Password</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Current Password</label>
             <div className="relative">
               <HiOutlineLockClosed className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
               <input type={showPasswords ? 'text' : 'password'} value={currentPassword}
@@ -174,7 +174,7 @@ export default function ProfilePage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">New Password</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">New Password</label>
             <div className="relative">
               <HiOutlineLockClosed className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
               <input type={showPasswords ? 'text' : 'password'} value={newPassword}
@@ -184,7 +184,7 @@ export default function ProfilePage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Confirm New Password</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Confirm New Password</label>
             <div className="relative">
               <HiOutlineLockClosed className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
               <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}

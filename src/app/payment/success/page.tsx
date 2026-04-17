@@ -29,8 +29,8 @@ function SuccessContent() {
         <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
           <HiOutlineCheckCircle className="w-12 h-12 text-emerald-400" />
         </div>
-        <h1 className="text-2xl font-bold text-white mb-3 font-[family-name:var(--font-heading)]">Payment Successful!</h1>
-        <p className="text-dark-400 mb-8">Thank you for your purchase. You now have full access to the premium idea content.</p>
+        <h1 className="text-2xl font-bold text-dark-900 dark:text-white mb-3 font-[family-name:var(--font-heading)]">Payment Successful!</h1>
+        <p className="text-dark-600 dark:text-dark-400 mb-8">Thank you for your purchase. You now have full access to the premium idea content.</p>
         <div className="flex gap-3">
           <Link href={`/ideas/${searchParams.get('idea_id') || ''}`} className="btn-primary flex-1 py-3 text-center">View Idea</Link>
           <Link href="/ideas" className="btn-secondary flex-1 py-3 text-center">Browse Ideas</Link>

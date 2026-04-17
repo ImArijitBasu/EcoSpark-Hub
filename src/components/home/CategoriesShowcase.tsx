@@ -44,10 +44,10 @@ export default function CategoriesShowcase() {
           className="text-center mb-16"
         >
           <span className="text-accent-400 text-sm font-semibold uppercase tracking-wider">Explore Topics</span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-white mt-2 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mt-2 mb-4">
             Idea Categories
           </h2>
-          <p className="text-dark-400 max-w-xl mx-auto">
+          <p className="text-dark-600 dark:text-dark-400 max-w-xl mx-auto">
             Browse sustainability ideas across key environmental areas curated by our admin team.
           </p>
         </motion.div>
@@ -68,7 +68,7 @@ export default function CategoriesShowcase() {
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index % gradients.length]} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform`}>
                   <span className="text-3xl">{fallbackIcons[cat.slug] || cat.icon || '🌍'}</span>
                 </div>
-                <h3 className="text-sm font-semibold text-white group-hover:text-primary-400 transition-colors">
+                <h3 className="text-sm font-semibold text-dark-900 dark:text-white group-hover:text-primary-400 transition-colors">
                   {cat.name}
                 </h3>
                 <p className="text-xs text-dark-500 mt-1">

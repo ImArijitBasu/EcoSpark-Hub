@@ -19,8 +19,8 @@ export default function ContactPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <span className="text-primary-400 text-sm font-semibold uppercase tracking-wider">Get in Touch</span>
-          <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-white mt-2 mb-4">Contact Us</h1>
-          <p className="text-dark-400 max-w-xl mx-auto">Have questions or suggestions? We&apos;d love to hear from you.</p>
+          <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mt-2 mb-4">Contact Us</h1>
+          <p className="text-dark-600 dark:text-dark-400 max-w-xl mx-auto">Have questions or suggestions? We&apos;d love to hear from you.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -37,7 +37,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-xs text-dark-500 uppercase tracking-wider">{info.label}</p>
-                  <p className="text-sm font-medium text-white">{info.value}</p>
+                  <p className="text-sm font-medium text-dark-900 dark:text-white">{info.value}</p>
                 </div>
               </div>
             ))}
@@ -53,20 +53,20 @@ export default function ContactPage() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-dark-300 mb-1.5">Name</label>
+                <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Name</label>
                 <input value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="input-glass" required />
               </div>
               <div>
-                <label className="block text-sm font-medium text-dark-300 mb-1.5">Email</label>
+                <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Email</label>
                 <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="input-glass" required />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-dark-300 mb-1.5">Subject</label>
+              <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Subject</label>
               <input value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} className="input-glass" required />
             </div>
             <div>
-              <label className="block text-sm font-medium text-dark-300 mb-1.5">Message</label>
+              <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Message</label>
               <textarea value={form.message} onChange={e => setForm({...form, message: e.target.value})} rows={5} className="input-glass resize-none" required />
             </div>
             <button type="submit" className="btn-primary w-full py-3 cursor-pointer">Send Message</button>

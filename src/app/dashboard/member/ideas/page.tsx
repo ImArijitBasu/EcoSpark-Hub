@@ -49,7 +49,7 @@ export default function MyIdeasPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white">My Ideas</h1>
+        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white">My Ideas</h1>
         <Link href="/dashboard/member/create" className="btn-primary text-sm flex items-center gap-2">
           <HiOutlinePlusCircle className="w-4 h-4" /> New Idea
         </Link>
@@ -62,7 +62,7 @@ export default function MyIdeasPage() {
             key={status}
             onClick={() => setFilter(status)}
             className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-              filter === status ? 'gradient-primary text-white' : 'glass-light text-dark-400 hover:text-white'
+              filter === status ? 'gradient-primary text-dark-900 dark:text-white' : 'glass-light text-dark-600 dark:text-dark-400 hover:text-white'
             }`}
           >
             {status ? getStatusLabel(status) : 'All'} ({status ? ideas.filter(i => i.status === status).length : ideas.length})
@@ -77,7 +77,7 @@ export default function MyIdeasPage() {
       ) : filtered.length === 0 ? (
         <div className="text-center py-16 glass rounded-2xl">
           <span className="text-4xl block mb-3">💡</span>
-          <p className="text-dark-400">No ideas found. Create your first one!</p>
+          <p className="text-dark-600 dark:text-dark-400">No ideas found. Create your first one!</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -85,7 +85,7 @@ export default function MyIdeasPage() {
             <div key={idea.id} className="glass rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center gap-4">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-base font-semibold text-white truncate">{idea.title}</h3>
+                  <h3 className="text-base font-semibold text-dark-900 dark:text-white truncate">{idea.title}</h3>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${getStatusColor(idea.status)}`}>
                     {getStatusLabel(idea.status)}
                   </span>

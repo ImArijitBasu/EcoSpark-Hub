@@ -26,11 +26,11 @@ export default function CallToAction() {
           <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent-400/10 rounded-full blur-2xl" />
 
           <div className="relative z-10 p-8 sm:p-12 lg:p-16 text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-[family-name:var(--font-heading)] text-white mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-6 leading-tight">
               Ready to Make a<br />
               <span className="gradient-text-gold">Difference?</span>
             </h2>
-            <p className="text-lg text-dark-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-lg text-dark-600 dark:text-dark-300 max-w-2xl mx-auto mb-10 leading-relaxed">
               Join thousands of sustainability advocates sharing innovative ideas.
               Whether you&apos;re an expert or just getting started, your voice matters.
             </p>
@@ -59,7 +59,7 @@ export default function CallToAction() {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap items-center justify-center gap-6 mt-10 text-sm text-dark-400">
+            <div className="flex flex-wrap items-center justify-center gap-6 mt-10 text-sm text-dark-600 dark:text-dark-400">
               <span className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-primary-400" />
                 Free to join

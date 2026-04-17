@@ -11,8 +11,8 @@ export default function GlobalError({
     <div className="min-h-[70vh] flex items-center justify-center px-4">
       <div className="text-center max-w-md glass rounded-3xl p-8">
         <span className="text-5xl block mb-4">⚠️</span>
-        <h2 className="text-xl font-bold text-white mb-2">Something went wrong</h2>
-        <p className="text-sm text-dark-400 mb-6">{error.message || 'An unexpected error occurred.'}</p>
+        <h2 className="text-xl font-bold text-dark-900 dark:text-white mb-2">Something went wrong</h2>
+        <p className="text-sm text-dark-600 dark:text-dark-400 mb-6">{error.message || 'An unexpected error occurred.'}</p>
         <button onClick={reset} className="btn-primary cursor-pointer">
           Try again
         </button>

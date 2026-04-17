@@ -90,20 +90,20 @@ export default function EditIdeaPage() {
 
   return (
     <div>
-      <Link href="/dashboard/member/ideas" className="inline-flex items-center gap-1 text-dark-400 hover:text-primary-400 text-sm mb-4 transition-colors">
+      <Link href="/dashboard/member/ideas" className="inline-flex items-center gap-1 text-dark-600 dark:text-dark-400 hover:text-primary-400 text-sm mb-4 transition-colors">
         <HiOutlineArrowLeft className="w-4 h-4" /> Back to My Ideas
       </Link>
 
-      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white mb-6">Edit Idea</h1>
+      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-6">Edit Idea</h1>
 
       <div className="glass rounded-2xl p-6 sm:p-8 max-w-3xl space-y-6">
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Title *</label>
+          <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Title *</label>
           <input value={title} onChange={e => setTitle(e.target.value)} className="input-glass" />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Category *</label>
+          <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Category *</label>
           <select value={categoryId} onChange={e => setCategoryId(e.target.value)} className="input-glass cursor-pointer">
             <option value="">Select a category</option>
             {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
@@ -111,24 +111,24 @@ export default function EditIdeaPage() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Problem Statement *</label>
+          <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Problem Statement *</label>
           <textarea value={problemStatement} onChange={e => setProblemStatement(e.target.value)} rows={3} className="input-glass resize-none" />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Proposed Solution *</label>
+          <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Proposed Solution *</label>
           <textarea value={proposedSolution} onChange={e => setProposedSolution(e.target.value)} rows={3} className="input-glass resize-none" />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Description *</label>
+          <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Description *</label>
           <textarea value={description} onChange={e => setDescription(e.target.value)} rows={5} className="input-glass resize-none" />
         </div>
 
         {/* Existing Images */}
         {existingImages.length > 0 && (
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Current Images</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Current Images</label>
             <div className="flex gap-2 flex-wrap">
               {existingImages.map((img, i) => (
                 <img key={i} src={img} alt={`Current ${i}`} className="w-20 h-20 object-cover rounded-xl border border-white/10" />
@@ -138,10 +138,10 @@ export default function EditIdeaPage() {
         )}
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Replace Images (up to 5)</label>
+          <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Replace Images (up to 5)</label>
           <label className="flex items-center justify-center gap-2 p-6 rounded-xl border-2 border-dashed border-dark-600 hover:border-primary-500/50 transition-colors cursor-pointer">
             <HiOutlinePhotograph className="w-6 h-6 text-dark-500" />
-            <span className="text-sm text-dark-400">Click to upload new images</span>
+            <span className="text-sm text-dark-600 dark:text-dark-400">Click to upload new images</span>
             <input type="file" multiple accept="image/*" onChange={handleImageChange} className="hidden" />
           </label>
           {previews.length > 0 && (
@@ -154,7 +154,7 @@ export default function EditIdeaPage() {
         <div className="flex items-center gap-4 p-4 rounded-xl glass-light">
           <label className="flex items-center gap-3 cursor-pointer">
             <input type="checkbox" checked={isPaid} onChange={e => setIsPaid(e.target.checked)} className="w-5 h-5 rounded accent-primary-500 cursor-pointer" />
-            <span className="text-sm font-medium text-dark-200">Paid Idea (Premium)</span>
+            <span className="text-sm font-medium text-dark-800 dark:text-dark-200">Paid Idea (Premium)</span>
           </label>
           {isPaid && (
             <input type="number" value={price} onChange={e => setPrice(e.target.value)} placeholder="Price (USD)" min="0.5" step="0.01" className="input-glass w-32 text-sm" />

@@ -34,10 +34,10 @@ export default function MemberDashboard() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white">
+        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white">
           Welcome back, {user?.name?.split(' ')[0]} 👋
         </h1>
-        <p className="text-dark-400 text-sm mt-1">Here&apos;s an overview of your sustainability ideas</p>
+        <p className="text-dark-600 dark:text-dark-400 text-sm mt-1">Here&apos;s an overview of your sustainability ideas</p>
       </div>
 
       {/* Stats Grid */}
@@ -52,22 +52,22 @@ export default function MemberDashboard() {
             <div className={`w-10 h-10 rounded-xl bg-${stat.color}-500/10 flex items-center justify-center mb-3`}>
               <stat.icon className={`w-5 h-5 text-${stat.color}-400`} />
             </div>
-            <p className="text-2xl font-bold text-white">{loading ? '—' : stat.value}</p>
-            <p className="text-xs text-dark-400 mt-1">{stat.label}</p>
+            <p className="text-2xl font-bold text-dark-900 dark:text-white">{loading ? '—' : stat.value}</p>
+            <p className="text-xs text-dark-600 dark:text-dark-400 mt-1">{stat.label}</p>
           </div>
         ))}
       </div>
 
       {/* Quick Actions */}
       <div className="glass rounded-2xl p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">Quick Actions</h2>
+        <h2 className="text-lg font-semibold text-dark-900 dark:text-white mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Link href="/dashboard/member/create" className="flex items-center gap-3 p-4 rounded-xl glass-light hover:border-primary-500/30 transition-all group">
             <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-              <HiOutlinePlusCircle className="w-5 h-5 text-white" />
+              <HiOutlinePlusCircle className="w-5 h-5 text-dark-900 dark:text-white" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-white group-hover:text-primary-400 transition-colors">Create New Idea</p>
+              <p className="text-sm font-semibold text-dark-900 dark:text-white group-hover:text-primary-400 transition-colors">Create New Idea</p>
               <p className="text-xs text-dark-500">Share your sustainability concept</p>
             </div>
           </Link>
@@ -76,7 +76,7 @@ export default function MemberDashboard() {
               <HiOutlineLightBulb className="w-5 h-5 text-accent-400" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-white group-hover:text-primary-400 transition-colors">View My Ideas</p>
+              <p className="text-sm font-semibold text-dark-900 dark:text-white group-hover:text-primary-400 transition-colors">View My Ideas</p>
               <p className="text-xs text-dark-500">Manage your submitted ideas</p>
             </div>
           </Link>

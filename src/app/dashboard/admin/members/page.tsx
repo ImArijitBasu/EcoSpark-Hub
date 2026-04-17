@@ -58,7 +58,7 @@ export default function AdminMembersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white mb-6">Manage Members</h1>
+      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-6">Manage Members</h1>
 
       <form onSubmit={handleSearch} className="flex gap-2 mb-6">
         <div className="relative flex-1 max-w-md">
@@ -75,11 +75,11 @@ export default function AdminMembersPage() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-white/5">
-                <th className="text-left text-xs font-semibold text-dark-400 uppercase tracking-wider py-3 px-4">Member</th>
-                <th className="text-left text-xs font-semibold text-dark-400 uppercase tracking-wider py-3 px-4">Role</th>
-                <th className="text-left text-xs font-semibold text-dark-400 uppercase tracking-wider py-3 px-4">Status</th>
-                <th className="text-left text-xs font-semibold text-dark-400 uppercase tracking-wider py-3 px-4">Joined</th>
-                <th className="text-right text-xs font-semibold text-dark-400 uppercase tracking-wider py-3 px-4">Actions</th>
+                <th className="text-left text-xs font-semibold text-dark-600 dark:text-dark-400 uppercase tracking-wider py-3 px-4">Member</th>
+                <th className="text-left text-xs font-semibold text-dark-600 dark:text-dark-400 uppercase tracking-wider py-3 px-4">Role</th>
+                <th className="text-left text-xs font-semibold text-dark-600 dark:text-dark-400 uppercase tracking-wider py-3 px-4">Status</th>
+                <th className="text-left text-xs font-semibold text-dark-600 dark:text-dark-400 uppercase tracking-wider py-3 px-4">Joined</th>
+                <th className="text-right text-xs font-semibold text-dark-600 dark:text-dark-400 uppercase tracking-wider py-3 px-4">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
@@ -87,11 +87,11 @@ export default function AdminMembersPage() {
                 <tr key={u.id} className="hover:bg-white/2 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-white text-xs font-bold">
+                      <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-xs font-bold">
                         {u.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white">{u.name}</p>
+                        <p className="text-sm font-medium text-dark-900 dark:text-white">{u.name}</p>
                         <p className="text-xs text-dark-500">{u.email}</p>
                       </div>
                     </div>
@@ -100,7 +100,7 @@ export default function AdminMembersPage() {
                     <select
                       value={u.role}
                       onChange={e => handleChangeRole(u.id, e.target.value)}
-                      className="text-xs px-2 py-1 rounded-lg glass-light text-dark-300 cursor-pointer border-none focus:ring-0"
+                      className="text-xs px-2 py-1 rounded-lg glass-light text-dark-600 dark:text-dark-300 cursor-pointer border-none focus:ring-0"
                     >
                       <option value="MEMBER">Member</option>
                       <option value="ADMIN">Admin</option>
@@ -132,7 +132,7 @@ export default function AdminMembersPage() {
         <div className="flex justify-center gap-2 mt-6">
           {Array.from({ length: totalPages }, (_, i) => (
             <button key={i} onClick={() => setPage(i + 1)}
-              className={`w-9 h-9 rounded-lg text-sm font-medium cursor-pointer ${page === i + 1 ? 'gradient-primary text-white' : 'glass-light text-dark-400'}`}>
+              className={`w-9 h-9 rounded-lg text-sm font-medium cursor-pointer ${page === i + 1 ? 'gradient-primary text-dark-900 dark:text-white' : 'glass-light text-dark-600 dark:text-dark-400'}`}>
               {i + 1}
             </button>
           ))}

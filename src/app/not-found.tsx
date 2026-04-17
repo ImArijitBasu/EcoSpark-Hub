@@ -13,10 +13,10 @@ export default function NotFound() {
             🌿
           </span>
         </div>
-        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white mb-3">
+        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-3">
           Page Not Found
         </h1>
-        <p className="text-dark-400 mb-8">
+        <p className="text-dark-600 dark:text-dark-400 mb-8">
           Looks like this path doesn&apos;t lead anywhere sustainable.
           Let&apos;s get you back on track.
         </p>

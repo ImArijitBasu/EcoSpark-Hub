@@ -42,13 +42,13 @@ export default function Newsletter() {
 
           <div className="relative z-10">
             <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-6">
-              <HiOutlineMail className="w-8 h-8 text-white" />
+              <HiOutlineMail className="w-8 h-8 text-dark-900 dark:text-white" />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-4">
               Stay in the Loop
             </h2>
-            <p className="text-dark-400 max-w-lg mx-auto mb-8">
+            <p className="text-dark-600 dark:text-dark-400 max-w-lg mx-auto mb-8">
               Get notified about new ideas, top-voted projects, and important announcements
               from the EcoSpark community.
             </p>

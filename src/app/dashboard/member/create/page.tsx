@@ -70,7 +70,7 @@ export default function CreateIdeaPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white mb-6">
+      <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-6">
         Create New Idea
       </h1>
 
@@ -78,13 +78,13 @@ export default function CreateIdeaPage() {
         <div className="space-y-6">
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Title *</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Title *</label>
             <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Give your idea a compelling title" className="input-glass" required />
           </div>
 
           {/* Category */}
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Category *</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Category *</label>
             <select value={categoryId} onChange={e => setCategoryId(e.target.value)} className="input-glass cursor-pointer" required>
               <option value="">Select a category</option>
               {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
@@ -93,28 +93,28 @@ export default function CreateIdeaPage() {
 
           {/* Problem Statement */}
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Problem Statement *</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Problem Statement *</label>
             <textarea value={problemStatement} onChange={e => setProblemStatement(e.target.value)} rows={3} placeholder="What problem does your idea address?" className="input-glass resize-none" required />
           </div>
 
           {/* Proposed Solution */}
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Proposed Solution *</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Proposed Solution *</label>
             <textarea value={proposedSolution} onChange={e => setProposedSolution(e.target.value)} rows={3} placeholder="How does your idea solve the problem?" className="input-glass resize-none" required />
           </div>
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Detailed Description *</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Detailed Description *</label>
             <textarea value={description} onChange={e => setDescription(e.target.value)} rows={5} placeholder="Provide a detailed explanation of your idea..." className="input-glass resize-none" required />
           </div>
 
           {/* Images */}
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Images (up to 5)</label>
+            <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Images (up to 5)</label>
             <label className="flex items-center justify-center gap-2 p-6 rounded-xl border-2 border-dashed border-dark-600 hover:border-primary-500/50 transition-colors cursor-pointer">
               <HiOutlinePhotograph className="w-6 h-6 text-dark-500" />
-              <span className="text-sm text-dark-400">Click to upload images</span>
+              <span className="text-sm text-dark-600 dark:text-dark-400">Click to upload images</span>
               <input type="file" multiple accept="image/*" onChange={handleImageChange} className="hidden" />
             </label>
             {previews.length > 0 && (
@@ -130,7 +130,7 @@ export default function CreateIdeaPage() {
           <div className="flex items-center gap-4 p-4 rounded-xl glass-light">
             <label className="flex items-center gap-3 cursor-pointer">
               <input type="checkbox" checked={isPaid} onChange={e => setIsPaid(e.target.checked)} className="w-5 h-5 rounded accent-primary-500 cursor-pointer" />
-              <span className="text-sm font-medium text-dark-200">Mark as Paid Idea (Premium)</span>
+              <span className="text-sm font-medium text-dark-800 dark:text-dark-200">Mark as Paid Idea (Premium)</span>
             </label>
             {isPaid && (
               <input

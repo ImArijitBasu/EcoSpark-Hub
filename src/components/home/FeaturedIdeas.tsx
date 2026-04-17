@@ -38,10 +38,10 @@ export default function FeaturedIdeas() {
           className="text-center mb-16"
         >
           <span className="text-primary-400 text-sm font-semibold uppercase tracking-wider">Community Highlights</span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-white mt-2 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mt-2 mb-4">
             Featured Ideas
           </h2>
-          <p className="text-dark-400 max-w-xl mx-auto">
+          <p className="text-dark-600 dark:text-dark-400 max-w-xl mx-auto">
             Discover the most impactful sustainability ideas voted by our community members.
           </p>
         </motion.div>
@@ -84,11 +84,11 @@ export default function FeaturedIdeas() {
                         </div>
                       )}
                       {/* Category Badge */}
-                      <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold bg-primary-500/90 text-white backdrop-blur-sm">
+                      <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold bg-primary-500/90 text-dark-900 dark:text-white backdrop-blur-sm">
                         {idea.category.name}
                       </span>
                       {idea.isPaid && (
-                        <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/90 text-white backdrop-blur-sm">
+                        <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/90 text-dark-900 dark:text-white backdrop-blur-sm">
                           💎 Premium
                         </span>
                       )}
@@ -96,17 +96,17 @@ export default function FeaturedIdeas() {
 
                     {/* Content */}
                     <div className="p-5">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-primary-400 transition-colors line-clamp-2">
+                      <h3 className="text-lg font-semibold text-dark-900 dark:text-white mb-2 group-hover:text-primary-400 transition-colors line-clamp-2">
                         {idea.title}
                       </h3>
-                      <p className="text-sm text-dark-400 mb-4 line-clamp-2">
+                      <p className="text-sm text-dark-600 dark:text-dark-400 mb-4 line-clamp-2">
                         {truncate(idea.description, 120)}
                       </p>
 
                       {/* Footer */}
                       <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                        <div className="flex items-center gap-1 text-sm text-dark-400">
-                          <span className="w-6 h-6 rounded-full gradient-primary flex items-center justify-center text-white text-xs font-semibold">
+                        <div className="flex items-center gap-1 text-sm text-dark-600 dark:text-dark-400">
+                          <span className="w-6 h-6 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-xs font-semibold">
                             {idea.author.name.charAt(0)}
                           </span>
                           <span className="ml-1">{idea.author.name}</span>
@@ -131,8 +131,8 @@ export default function FeaturedIdeas() {
         ) : (
           <div className="text-center py-16 glass rounded-2xl">
             <span className="text-5xl mb-4 block">🌱</span>
-            <h3 className="text-xl font-semibold text-white mb-2">No ideas yet</h3>
-            <p className="text-dark-400 mb-6">Be the first to share a sustainability idea!</p>
+            <h3 className="text-xl font-semibold text-dark-900 dark:text-white mb-2">No ideas yet</h3>
+            <p className="text-dark-600 dark:text-dark-400 mb-6">Be the first to share a sustainability idea!</p>
             <Link href="/dashboard/member/create" className="btn-primary inline-flex items-center gap-2">
               Submit an Idea <HiOutlineArrowRight className="w-4 h-4" />
             </Link>

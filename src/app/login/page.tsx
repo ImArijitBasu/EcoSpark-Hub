@@ -45,19 +45,19 @@ export default function LoginPage() {
         <div className="glass rounded-3xl p-8 sm:p-10 glow-emerald-sm">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-white">
+            <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-dark-900 dark:text-white">
               E
             </div>
-            <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white">
+            <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white">
               Welcome Back
             </h1>
-            <p className="text-dark-400 text-sm mt-1">Sign in to continue to EcoSpark Hub</p>
+            <p className="text-dark-600 dark:text-dark-400 text-sm mt-1">Sign in to continue to EcoSpark Hub</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-dark-300 mb-1.5">
+              <label htmlFor="email" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">
                 Email Address
               </label>
               <div className="relative">
@@ -76,7 +76,7 @@ export default function LoginPage() {
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-dark-300 mb-1.5">
+              <label htmlFor="password" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">
                 Password
               </label>
               <div className="relative">
@@ -115,7 +115,7 @@ export default function LoginPage() {
           </form>
 
           {/* Footer */}
-          <p className="text-center text-sm text-dark-400 mt-6">
+          <p className="text-center text-sm text-dark-600 dark:text-dark-400 mt-6">
             Don&apos;t have an account?{' '}
             <Link href="/register" className="text-primary-400 hover:text-primary-300 font-medium transition-colors">
               Create one

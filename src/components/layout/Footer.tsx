@@ -38,24 +38,24 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center font-bold text-white text-xl shadow-lg">
+              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center font-bold text-dark-900 dark:text-white text-xl shadow-lg">
                 E
               </div>
               <span className="text-2xl font-bold font-[family-name:var(--font-heading)]">
                 <span className="gradient-text">Eco</span>
-                <span className="text-white">Spark</span>
+                <span className="text-dark-900 dark:text-white">Spark</span>
               </span>
             </Link>
-            <p className="text-dark-400 text-sm leading-relaxed max-w-sm mb-6">
+            <p className="text-dark-600 dark:text-dark-400 text-sm leading-relaxed max-w-sm mb-6">
               Empowering communities with sustainable ideas. Share, discover, and vote on
               eco-friendly projects that make a real impact on our planet.
             </p>
             <div className="space-y-2">
-              <a href="mailto:contact@ecosparkhub.com" className="flex items-center gap-2 text-sm text-dark-400 hover:text-primary-400 transition-colors">
+              <a href="mailto:contact@ecosparkhub.com" className="flex items-center gap-2 text-sm text-dark-600 dark:text-dark-400 hover:text-primary-400 transition-colors">
                 <HiOutlineMail className="w-4 h-4" />
                 contact@ecosparkhub.com
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-2 text-sm text-dark-400 hover:text-primary-400 transition-colors">
+              <a href="tel:+1234567890" className="flex items-center gap-2 text-sm text-dark-600 dark:text-dark-400 hover:text-primary-400 transition-colors">
                 <HiOutlinePhone className="w-4 h-4" />
                 +1 (234) 567-890
               </a>
@@ -64,11 +64,11 @@ export default function Footer() {
 
           {/* Platform Links */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Platform</h3>
+            <h3 className="text-sm font-semibold text-dark-900 dark:text-white uppercase tracking-wider mb-4">Platform</h3>
             <ul className="space-y-3">
               {footerLinks.platform.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-dark-400 hover:text-primary-400 transition-colors">
+                  <Link href={link.href} className="text-sm text-dark-600 dark:text-dark-400 hover:text-primary-400 transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -78,11 +78,11 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Resources</h3>
+            <h3 className="text-sm font-semibold text-dark-900 dark:text-white uppercase tracking-wider mb-4">Resources</h3>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-dark-400 hover:text-primary-400 transition-colors">
+                  <Link href={link.href} className="text-sm text-dark-600 dark:text-dark-400 hover:text-primary-400 transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -92,11 +92,11 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Legal</h3>
+            <h3 className="text-sm font-semibold text-dark-900 dark:text-white uppercase tracking-wider mb-4">Legal</h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-dark-400 hover:text-primary-400 transition-colors">
+                  <Link href={link.href} className="text-sm text-dark-600 dark:text-dark-400 hover:text-primary-400 transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -116,7 +116,7 @@ export default function Footer() {
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="w-9 h-9 rounded-lg glass-light flex items-center justify-center text-dark-400 hover:text-primary-400 hover:border-primary-500/30 transition-all"
+                className="w-9 h-9 rounded-lg glass-light flex items-center justify-center text-dark-600 dark:text-dark-400 hover:text-primary-400 hover:border-primary-500/30 transition-all"
               >
                 <social.icon className="w-4 h-4" />
               </a>

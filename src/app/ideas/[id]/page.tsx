@@ -150,7 +150,7 @@ export default function IdeaDetailPage() {
     <div className="min-h-screen py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
-        <Link href="/ideas" className="inline-flex items-center gap-1 text-dark-400 hover:text-primary-400 text-sm mb-6 transition-colors">
+        <Link href="/ideas" className="inline-flex items-center gap-1 text-dark-600 dark:text-dark-400 hover:text-primary-400 text-sm mb-6 transition-colors">
           <HiOutlineArrowLeft className="w-4 h-4" /> Back to Ideas
         </Link>
 
@@ -181,11 +181,11 @@ export default function IdeaDetailPage() {
               )}
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-bold font-[family-name:var(--font-heading)] text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white mb-4">
               {idea.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-dark-400 mb-8">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-dark-600 dark:text-dark-400 mb-8">
               <div className="flex items-center gap-2">
                 <HiOutlineUser className="w-4 h-4" />
                 {idea.author.name}
@@ -200,8 +200,8 @@ export default function IdeaDetailPage() {
             {isPaidLocked ? (
               <div className="text-center py-12 relative overflow-hidden rounded-2xl glass-light">
                 <HiOutlineLockClosed className="w-16 h-16 text-dark-500 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-white mb-2">Premium Content</h3>
-                <p className="text-dark-400 mb-6 max-w-sm mx-auto">
+                <h3 className="text-xl font-semibold text-dark-900 dark:text-white mb-2">Premium Content</h3>
+                <p className="text-dark-600 dark:text-dark-400 mb-6 max-w-sm mx-auto">
                   This idea requires a one-time payment of <span className="text-accent-400 font-semibold">${idea.price}</span> to access.
                 </p>
                 <button onClick={handlePayment} className="btn-primary px-8 py-3 text-base cursor-pointer">
@@ -214,15 +214,15 @@ export default function IdeaDetailPage() {
                 <div className="space-y-8 mb-8">
                   <div>
                     <h2 className="text-lg font-semibold text-primary-400 mb-2">Problem Statement</h2>
-                    <p className="text-dark-300 leading-relaxed whitespace-pre-wrap">{idea.problemStatement}</p>
+                    <p className="text-dark-600 dark:text-dark-300 leading-relaxed whitespace-pre-wrap">{idea.problemStatement}</p>
                   </div>
                   <div>
                     <h2 className="text-lg font-semibold text-primary-400 mb-2">Proposed Solution</h2>
-                    <p className="text-dark-300 leading-relaxed whitespace-pre-wrap">{idea.proposedSolution}</p>
+                    <p className="text-dark-600 dark:text-dark-300 leading-relaxed whitespace-pre-wrap">{idea.proposedSolution}</p>
                   </div>
                   <div>
                     <h2 className="text-lg font-semibold text-primary-400 mb-2">Description</h2>
-                    <p className="text-dark-300 leading-relaxed whitespace-pre-wrap">{idea.description}</p>
+                    <p className="text-dark-600 dark:text-dark-300 leading-relaxed whitespace-pre-wrap">{idea.description}</p>
                   </div>
                 </div>
 
@@ -242,7 +242,7 @@ export default function IdeaDetailPage() {
               <button
                 onClick={() => handleVote('UPVOTE')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all cursor-pointer ${
-                  userVote?.type === 'UPVOTE' ? 'bg-primary-500/20 text-primary-400 border border-primary-500/30' : 'glass-light text-dark-400 hover:text-primary-400'
+                  userVote?.type === 'UPVOTE' ? 'bg-primary-500/20 text-primary-400 border border-primary-500/30' : 'glass-light text-dark-600 dark:text-dark-400 hover:text-primary-400'
                 }`}
               >
                 <HiOutlineThumbUp className="w-5 h-5" />
@@ -251,13 +251,13 @@ export default function IdeaDetailPage() {
               <button
                 onClick={() => handleVote('DOWNVOTE')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all cursor-pointer ${
-                  userVote?.type === 'DOWNVOTE' ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'glass-light text-dark-400 hover:text-red-400'
+                  userVote?.type === 'DOWNVOTE' ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'glass-light text-dark-600 dark:text-dark-400 hover:text-red-400'
                 }`}
               >
                 <HiOutlineThumbDown className="w-5 h-5" />
                 <span className="font-semibold">{idea.downvoteCount}</span>
               </button>
-              <div className="flex items-center gap-1 ml-auto text-dark-400">
+              <div className="flex items-center gap-1 ml-auto text-dark-600 dark:text-dark-400">
                 <HiOutlineChatAlt2 className="w-5 h-5" />
                 <span>{idea.commentCount} comments</span>
               </div>
@@ -267,7 +267,7 @@ export default function IdeaDetailPage() {
 
         {/* Comments Section */}
         <div className="mt-8">
-          <h2 className="text-xl font-bold text-white mb-6">Comments</h2>
+          <h2 className="text-xl font-bold text-dark-900 dark:text-white mb-6">Comments</h2>
 
           {isAuthenticated && (
             <form onSubmit={handleComment} className="mb-8">
@@ -288,15 +288,15 @@ export default function IdeaDetailPage() {
             {comments.map((comment) => (
               <div key={comment.id} className="glass rounded-2xl p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-white text-xs font-bold">
+                  <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-xs font-bold">
                     {comment.user.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-white">{comment.user.name}</p>
+                    <p className="text-sm font-medium text-dark-900 dark:text-white">{comment.user.name}</p>
                     <p className="text-xs text-dark-500">{formatDate(comment.createdAt)}</p>
                   </div>
                 </div>
-                <p className="text-sm text-dark-300 ml-10">{comment.content}</p>
+                <p className="text-sm text-dark-600 dark:text-dark-300 ml-10">{comment.content}</p>
 
                 {isAuthenticated && (
                   <button onClick={() => setReplyTo(replyTo === comment.id ? null : comment.id)} className="text-xs text-primary-400 hover:text-primary-300 mt-2 ml-10 cursor-pointer">
@@ -317,13 +317,13 @@ export default function IdeaDetailPage() {
                     {comment.replies.map((reply) => (
                       <div key={reply.id}>
                         <div className="flex items-center gap-2 mb-1">
-                          <div className="w-6 h-6 rounded-full gradient-primary flex items-center justify-center text-white text-[10px] font-bold">
+                          <div className="w-6 h-6 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-[10px] font-bold">
                             {reply.user.name.charAt(0)}
                           </div>
-                          <p className="text-xs font-medium text-dark-200">{reply.user.name}</p>
+                          <p className="text-xs font-medium text-dark-800 dark:text-dark-200">{reply.user.name}</p>
                           <p className="text-xs text-dark-500">{formatDate(reply.createdAt)}</p>
                         </div>
-                        <p className="text-sm text-dark-400 ml-8">{reply.content}</p>
+                        <p className="text-sm text-dark-600 dark:text-dark-400 ml-8">{reply.content}</p>
                       </div>
                     ))}
                   </div>

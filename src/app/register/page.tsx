@@ -54,18 +54,18 @@ export default function RegisterPage() {
       >
         <div className="glass rounded-3xl p-8 sm:p-10 glow-emerald-sm">
           <div className="text-center mb-8">
-            <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-white">
+            <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-dark-900 dark:text-white">
               E
             </div>
-            <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-white">
+            <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark-900 dark:text-white">
               Join EcoSpark
             </h1>
-            <p className="text-dark-400 text-sm mt-1">Create your account and start making a difference</p>
+            <p className="text-dark-600 dark:text-dark-400 text-sm mt-1">Create your account and start making a difference</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-dark-300 mb-1.5">Full Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Full Name</label>
               <div className="relative">
                 <HiOutlineUser className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
                 <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe" className="input-glass pl-10" required />
@@ -73,7 +73,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="reg-email" className="block text-sm font-medium text-dark-300 mb-1.5">Email Address</label>
+              <label htmlFor="reg-email" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Email Address</label>
               <div className="relative">
                 <HiOutlineMail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
                 <input id="reg-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" className="input-glass pl-10" required />
@@ -81,7 +81,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="reg-password" className="block text-sm font-medium text-dark-300 mb-1.5">Password</label>
+              <label htmlFor="reg-password" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Password</label>
               <div className="relative">
                 <HiOutlineLockClosed className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
                 <input id="reg-password" type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Min. 6 characters" className="input-glass pl-10 pr-10" required minLength={6} />
@@ -92,7 +92,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="confirm-password" className="block text-sm font-medium text-dark-300 mb-1.5">Confirm Password</label>
+              <label htmlFor="confirm-password" className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Confirm Password</label>
               <div className="relative">
                 <HiOutlineLockClosed className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
                 <input id="confirm-password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Repeat your password" className="input-glass pl-10" required />
@@ -104,7 +104,7 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <p className="text-center text-sm text-dark-400 mt-6">
+          <p className="text-center text-sm text-dark-600 dark:text-dark-400 mt-6">
             Already have an account?{' '}
             <Link href="/login" className="text-primary-400 hover:text-primary-300 font-medium transition-colors">Sign in</Link>
           </p>
