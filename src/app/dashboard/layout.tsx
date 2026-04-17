@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 'flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all',
                 pathname === link.href
                   ? 'bg-primary-500/15 text-primary-400 border border-primary-500/20'
-                  : 'text-dark-600 dark:text-dark-400 hover:text-white hover:bg-white/5'
+                  : 'text-dark-600 dark:text-dark-400 hover:text-dark-900 dark:hover:text-white hover:bg-white/5'
               )}
             >
               <link.icon className="w-5 h-5" />

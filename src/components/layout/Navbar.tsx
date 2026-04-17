@@ -49,7 +49,7 @@ export default function Navbar() {
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
                   pathname === link.href
                     ? 'text-primary-500 dark:text-primary-400 bg-primary-500/10'
-                    : 'text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-white hover:bg-dark-100 dark:hover:bg-white/5'
+                    : 'text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-dark-900 dark:hover:text-white hover:bg-dark-100 dark:hover:bg-white/5'
                 )}
               >
                 {link.label}
@@ -70,7 +70,7 @@ export default function Navbar() {
                   <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-sm font-semibold">
                     {user?.name?.charAt(0).toUpperCase()}
                   </div>
-                  <span className="text-sm font-medium text-dark-200">{user?.name}</span>
+                  <span className="text-sm font-medium text-dark-800 dark:text-dark-200">{user?.name}</span>
                 </button>
 
                 <AnimatePresence>
@@ -93,7 +93,7 @@ export default function Navbar() {
                         <Link
                           href={dashboardLink}
                           onClick={() => setProfileDropdown(false)}
-                          className="flex items-center gap-2 px-3 py-2 text-sm text-dark-600 dark:text-dark-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                          className="flex items-center gap-2 px-3 py-2 text-sm text-dark-600 dark:text-dark-300 hover:text-dark-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                         >
                           <HiOutlineViewGrid className="w-4 h-4" />
                           Dashboard
@@ -101,7 +101,7 @@ export default function Navbar() {
                         <Link
                           href="/dashboard/member"
                           onClick={() => setProfileDropdown(false)}
-                          className="flex items-center gap-2 px-3 py-2 text-sm text-dark-600 dark:text-dark-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                          className="flex items-center gap-2 px-3 py-2 text-sm text-dark-600 dark:text-dark-300 hover:text-dark-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                         >
                           <HiOutlineUser className="w-4 h-4" />
                           My Profile
@@ -137,7 +137,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <button
-              className="p-2 text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-white transition-colors cursor-pointer"
+              className="p-2 text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-dark-900 dark:hover:text-white transition-colors cursor-pointer"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <HiOutlineX className="w-6 h-6" /> : <HiOutlineMenu className="w-6 h-6" />}
@@ -165,7 +165,7 @@ export default function Navbar() {
                     'block px-4 py-3 rounded-xl text-sm font-medium transition-colors',
                     pathname === link.href
                       ? 'text-primary-500 dark:text-primary-400 bg-primary-500/10'
-                      : 'text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-white hover:bg-dark-100 dark:hover:bg-white/5'
+                      : 'text-dark-600 hover:text-dark-900 dark:text-dark-300 dark:hover:text-dark-900 dark:hover:text-white hover:bg-dark-100 dark:hover:bg-white/5'
                   )}
                 >
                   {link.label}

@@ -62,7 +62,7 @@ export default function MyIdeasPage() {
             key={status}
             onClick={() => setFilter(status)}
             className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-              filter === status ? 'gradient-primary text-dark-900 dark:text-white' : 'glass-light text-dark-600 dark:text-dark-400 hover:text-white'
+              filter === status ? 'gradient-primary text-dark-900 dark:text-white' : 'glass-light text-dark-600 dark:text-dark-400 hover:text-dark-900 dark:hover:text-white'
             }`}
           >
             {status ? getStatusLabel(status) : 'All'} ({status ? ideas.filter(i => i.status === status).length : ideas.length})

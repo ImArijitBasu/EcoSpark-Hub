@@ -85,7 +85,7 @@ export default function Testimonials() {
                     {idea.author.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-dark-200">{idea.author.name}</p>
+                    <p className="text-sm font-medium text-dark-800 dark:text-dark-200">{idea.author.name}</p>
                     <p className="text-xs text-dark-500">{idea.category.name}</p>
                   </div>
                 </div>

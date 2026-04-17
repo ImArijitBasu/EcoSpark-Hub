@@ -33,6 +33,8 @@ function IdeasContent() {
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('recent');
   const [isPaid, setIsPaid] = useState('');
+  const [minVotes, setMinVotes] = useState('');
+  const [authorName, setAuthorName] = useState('');
 
   useEffect(() => {
     fetchCategories();
@@ -40,7 +42,7 @@ function IdeasContent() {
 
   useEffect(() => {
     fetchIdeas();
-  }, [page, category, sort, isPaid]);
+  }, [page, category, sort, isPaid, minVotes, authorName]);
 
   const fetchCategories = async () => {
     try {
@@ -59,6 +61,8 @@ function IdeasContent() {
       if (category) params.set('category', category);
       if (sort) params.set('sort', sort === 'recent' ? '' : sort);
       if (isPaid) params.set('isPaid', isPaid);
+      if (minVotes) params.set('minVotes', minVotes);
+      if (authorName) params.set('authorName', authorName);
 
       const res = await api.get(`/ideas?${params.toString()}`);
       setIdeas(res.data.data);
@@ -125,11 +129,35 @@ function IdeasContent() {
               <option value="true">Premium</option>
             </select>
           </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+            <div>
+              <label className="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-2">Member name</label>
+              <input 
+                value={authorName} 
+                onChange={(e) => { setAuthorName(e.target.value); setPage(1); }} 
+                placeholder="Filter by author name..." 
+                className="input-glass text-sm h-10"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-2">Minimum Upvotes: {minVotes || '0'}</label>
+              <input 
+                type="range" 
+                min="0" 
+                max="100" 
+                step="5"
+                value={minVotes || 0} 
+                onChange={(e) => { setMinVotes(e.target.value); setPage(1); }} 
+                className="w-full h-2 bg-dark-700/50 rounded-lg appearance-none cursor-pointer accent-primary-500"
+              />
+            </div>
+          </div>
         </motion.div>
 
         {/* Ideas Grid */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {[...Array(12)].map((_, i) => (
               <div key={i} className="glass rounded-2xl overflow-hidden animate-pulse">
                 <div className="h-44 bg-dark-700/50" />
@@ -143,7 +171,7 @@ function IdeasContent() {
           </div>
         ) : ideas.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {ideas.map((idea, index) => (
                 <motion.div
                   key={idea.id}

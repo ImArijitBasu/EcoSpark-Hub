@@ -76,7 +76,7 @@ export default function AdminIdeasPage() {
       <div className="flex flex-wrap gap-2 mb-6">
         {['UNDER_REVIEW', 'APPROVED', 'REJECTED', 'DRAFT', ''].map((s) => (
           <button key={s} onClick={() => { setFilter(s); setPage(1); }}
-            className={`px-4 py-2 rounded-xl text-xs font-medium cursor-pointer transition-all ${filter === s ? 'gradient-primary text-dark-900 dark:text-white' : 'glass-light text-dark-600 dark:text-dark-400 hover:text-white'}`}>
+            className={`px-4 py-2 rounded-xl text-xs font-medium cursor-pointer transition-all ${filter === s ? 'gradient-primary text-dark-900 dark:text-white' : 'glass-light text-dark-600 dark:text-dark-400 hover:text-dark-900 dark:hover:text-white'}`}>
             {s ? getStatusLabel(s) : 'All'}
           </button>
         ))}

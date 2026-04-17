@@ -95,7 +95,7 @@ export default function ProfilePage() {
         <button
           onClick={() => setTab('profile')}
           className={`px-5 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
-            tab === 'profile' ? 'gradient-primary text-dark-900 dark:text-white' : 'text-dark-600 dark:text-dark-400 hover:text-white'
+            tab === 'profile' ? 'gradient-primary text-dark-900 dark:text-white' : 'text-dark-600 dark:text-dark-400 hover:text-dark-900 dark:hover:text-white'
           }`}
         >
           Profile
@@ -103,7 +103,7 @@ export default function ProfilePage() {
         <button
           onClick={() => setTab('password')}
           className={`px-5 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
-            tab === 'password' ? 'gradient-primary text-dark-900 dark:text-white' : 'text-dark-600 dark:text-dark-400 hover:text-white'
+            tab === 'password' ? 'gradient-primary text-dark-900 dark:text-white' : 'text-dark-600 dark:text-dark-400 hover:text-dark-900 dark:hover:text-white'
           }`}
         >
           Change Password

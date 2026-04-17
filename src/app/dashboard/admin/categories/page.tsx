@@ -94,7 +94,7 @@ export default function AdminCategoriesPage() {
                 </div>
               </div>
               <div className="flex items-center gap-1">
-                <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg text-dark-600 dark:text-dark-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer">
+                <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg text-dark-600 dark:text-dark-400 hover:text-dark-900 dark:hover:text-white hover:bg-white/5 transition-colors cursor-pointer">
                   <HiOutlinePencil className="w-4 h-4" />
                 </button>
                 <button onClick={() => handleDelete(cat.id)} className="p-1.5 rounded-lg text-dark-600 dark:text-dark-400 hover:text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer">
@@ -114,7 +114,7 @@ export default function AdminCategoriesPage() {
               <h3 className="text-lg font-semibold text-dark-900 dark:text-white">
                 {modal === 'create' ? 'New Category' : 'Edit Category'}
               </h3>
-              <button onClick={() => setModal(null)} className="text-dark-600 dark:text-dark-400 hover:text-white cursor-pointer">
+              <button onClick={() => setModal(null)} className="text-dark-600 dark:text-dark-400 hover:text-dark-900 dark:hover:text-white cursor-pointer">
                 <HiOutlineX className="w-5 h-5" />
               </button>
             </div>
