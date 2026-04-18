@@ -21,17 +21,20 @@ export default function HeroBanner() {
       {/* Animated Background */}
       <div className="absolute inset-0 hero-gradient" />
 
-      {/* Floating Orbs */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-600/8 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-3xl" />
+      {/* Vignette Overlay for darker contrast */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-dark-950)_0%,_transparent_100%)] opacity-0 dark:opacity-40 z-0 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-black/10 dark:bg-black/30 z-0" />
+
+      {/* Heroic Deep Ambient Glows */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-glow" style={{ animationDuration: '8s' }} />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent-500/15 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-glow" style={{ animationDuration: '10s', animationDelay: '1s' }} />
 
       {/* Grid Overlay */}
       <div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] z-0"
         style={{
-          backgroundImage: 'linear-gradient(rgba(16,185,129,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.3) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+          backgroundImage: 'linear-gradient(rgba(16,185,129,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.5) 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
         }}
       />
 
@@ -85,7 +88,7 @@ export default function HeroBanner() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search ideas by name, category, or keyword..."
-              className="w-full pl-12 pr-32 py-4 rounded-2xl glass text-dark-900 dark:text-white text-base placeholder:text-dark-500 focus:outline-none focus:border-primary-500/50 focus:ring-2 focus:ring-primary-500/20 transition-all"
+              className="w-full pl-12 pr-32 py-5 rounded-2xl glass text-dark-900 dark:text-white text-base lg:text-lg placeholder:text-dark-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all"
             />
             <button
               type="submit"
@@ -101,7 +104,7 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-8 sm:gap-12"
+          className="inline-flex flex-wrap items-center justify-center gap-8 sm:gap-14 glass px-8 sm:px-12 py-6 rounded-3xl"
         >
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center">
