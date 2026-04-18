@@ -6,6 +6,7 @@ import api from '@/lib/api';
 import { Category } from '@/types';
 import toast from 'react-hot-toast';
 import { HiOutlinePhotograph } from 'react-icons/hi';
+import Image from 'next/image';
 
 export default function CreateIdeaPage() {
   const router = useRouter();
@@ -120,7 +121,9 @@ export default function CreateIdeaPage() {
             {previews.length > 0 && (
               <div className="flex gap-2 mt-3 flex-wrap">
                 {previews.map((src, i) => (
-                  <img key={i} src={src} alt={`Preview ${i}`} className="w-20 h-20 object-cover rounded-xl border border-white/10" />
+                  <div key={i} className="relative w-20 h-20 rounded-xl overflow-hidden border border-white/10">
+                    <Image src={src} alt={`Preview ${i}`} fill className="object-cover" unoptimized />
+                  </div>
                 ))}
               </div>
             )}

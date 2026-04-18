@@ -16,6 +16,7 @@ import {
   HiOutlineArrowLeft
 } from 'react-icons/hi';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function IdeaDetailPage() {
   const { id } = useParams();
@@ -158,7 +159,7 @@ export default function IdeaDetailPage() {
           {/* Images */}
           {idea.images.length > 0 && (
             <div className="relative h-64 sm:h-80 overflow-hidden">
-              <img src={idea.images[0]} alt={idea.title} className="w-full h-full object-cover" />
+              <Image src={idea.images[0]} alt={idea.title} fill className="object-cover" priority />
               <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent" />
             </div>
           )}
@@ -230,7 +231,9 @@ export default function IdeaDetailPage() {
                 {idea.images.length > 1 && (
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
                     {idea.images.slice(1).map((img, i) => (
-                      <img key={i} src={img} alt={`${idea.title} ${i + 2}`} className="rounded-xl w-full h-32 object-cover" />
+                      <div key={i} className="relative rounded-xl w-full h-32 overflow-hidden">
+                        <Image src={img} alt={`${idea.title} ${i + 2}`} fill className="object-cover" />
+                      </div>
                     ))}
                   </div>
                 )}

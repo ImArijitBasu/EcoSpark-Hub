@@ -4,6 +4,7 @@ export const dynamic = 'force-dynamic';
 
 import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import api from '@/lib/api';
@@ -17,6 +18,23 @@ export default function IdeasPage() {
       <IdeasContent />
     </Suspense>
   );
+}
+
+// Custom hook for debouncing values
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
 }
 
 function IdeasContent() {
@@ -36,13 +54,16 @@ function IdeasContent() {
   const [minVotes, setMinVotes] = useState('');
   const [authorName, setAuthorName] = useState('');
 
+  const debouncedMinVotes = useDebounce(minVotes, 500);
+  const debouncedAuthorName = useDebounce(authorName, 500);
+
   useEffect(() => {
     fetchCategories();
   }, []);
 
   useEffect(() => {
     fetchIdeas();
-  }, [page, category, sort, isPaid, minVotes, authorName]);
+  }, [page, category, sort, isPaid, debouncedMinVotes, debouncedAuthorName]);
 
   const fetchCategories = async () => {
     try {
@@ -61,8 +82,8 @@ function IdeasContent() {
       if (category) params.set('category', category);
       if (sort) params.set('sort', sort === 'recent' ? '' : sort);
       if (isPaid) params.set('isPaid', isPaid);
-      if (minVotes) params.set('minVotes', minVotes);
-      if (authorName) params.set('authorName', authorName);
+      if (debouncedMinVotes) params.set('minVotes', debouncedMinVotes);
+      if (debouncedAuthorName) params.set('authorName', debouncedAuthorName);
 
       const res = await api.get(`/ideas?${params.toString()}`);
       setIdeas(res.data.data);
@@ -137,7 +158,7 @@ function IdeasContent() {
                 value={authorName} 
                 onChange={(e) => { setAuthorName(e.target.value); setPage(1); }} 
                 placeholder="Filter by author name..." 
-                className="input-glass text-sm h-10"
+                className="input-glass text-sm h-10 w-full"
               />
             </div>
             <div>
@@ -183,7 +204,13 @@ function IdeasContent() {
                     <div className="glass rounded-2xl overflow-hidden card-hover group h-full">
                       <div className="relative h-44 overflow-hidden bg-dark-800">
                         {idea.images?.length > 0 ? (
-                          <img src={idea.images[0]} alt={idea.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <Image 
+                            src={idea.images[0]} 
+                            alt={idea.title} 
+                            fill 
+                            className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-900/40 to-dark-800">
                             <span className="text-5xl">🌿</span>

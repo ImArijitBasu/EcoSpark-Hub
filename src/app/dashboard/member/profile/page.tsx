@@ -5,6 +5,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import api from '@/lib/api';
 import toast from 'react-hot-toast';
 import { HiOutlineUser, HiOutlineMail, HiOutlineLockClosed, HiOutlinePhotograph, HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
+import Image from 'next/image';
 
 export default function ProfilePage() {
   const { user, updateUser } = useAuth();
@@ -114,9 +115,11 @@ export default function ProfilePage() {
         <form onSubmit={handleProfileUpdate} className="glass rounded-2xl p-6 sm:p-8 max-w-xl space-y-6">
           {/* Avatar */}
           <div className="flex items-center gap-6">
-            <div className="relative group">
+            <div className="relative group w-20 h-20">
               {preview ? (
-                <img src={preview} alt="Avatar" className="w-20 h-20 rounded-2xl object-cover border-2 border-primary-500/30" />
+                <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-primary-500/30">
+                  <Image src={preview} alt="Avatar" fill className="object-cover" unoptimized={preview.startsWith('blob:')} />
+                </div>
               ) : (
                 <div className="w-20 h-20 rounded-2xl gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-2xl font-bold">
                   {user?.name?.charAt(0)}

@@ -7,6 +7,7 @@ import { Category, Idea } from '@/types';
 import toast from 'react-hot-toast';
 import { HiOutlinePhotograph, HiOutlineArrowLeft } from 'react-icons/hi';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function EditIdeaPage() {
   const { id } = useParams();
@@ -131,7 +132,9 @@ export default function EditIdeaPage() {
             <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Current Images</label>
             <div className="flex gap-2 flex-wrap">
               {existingImages.map((img, i) => (
-                <img key={i} src={img} alt={`Current ${i}`} className="w-20 h-20 object-cover rounded-xl border border-white/10" />
+                <div key={i} className="relative w-20 h-20 rounded-xl border border-white/10 overflow-hidden">
+                  <Image src={img} alt={`Current ${i}`} fill className="object-cover" />
+                </div>
               ))}
             </div>
           </div>
@@ -146,7 +149,11 @@ export default function EditIdeaPage() {
           </label>
           {previews.length > 0 && (
             <div className="flex gap-2 mt-3 flex-wrap">
-              {previews.map((src, i) => <img key={i} src={src} alt={`Preview ${i}`} className="w-20 h-20 object-cover rounded-xl border border-white/10" />)}
+              {previews.map((src, i) => (
+                <div key={i} className="relative w-20 h-20 rounded-xl border border-white/10 overflow-hidden">
+                  <Image src={src} alt={`Preview ${i}`} fill className="object-cover" unoptimized />
+                </div>
+              ))}
             </div>
           )}
         </div>
