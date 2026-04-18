@@ -11,9 +11,7 @@ const values = [
 ];
 
 const team = [
-  { name: 'Sarah Chen', role: 'Founder & CEO', bio: 'Environmental scientist turned tech entrepreneur with 10+ years in sustainability.' },
-  { name: 'Marcus Rivera', role: 'CTO', bio: 'Full-stack developer passionate about building tools that empower communities.' },
-  { name: 'Priya Sharma', role: 'Head of Community', bio: 'Community builder who has organized 50+ environmental initiatives worldwide.' },
+  { name: 'Arijit Basu', role: 'Creator & Lead Developer', bio: 'Passionate developer dedicated to building an interactive platform for a sustainable future.' },
 ];
 
 export default function AboutPage() {
@@ -62,15 +60,15 @@ export default function AboutPage() {
         {/* Team */}
         <div>
           <h2 className="text-2xl font-bold text-dark-900 dark:text-white mb-8 text-center font-[family-name:var(--font-heading)]">Meet the Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex justify-center">
             {team.map((member, i) => (
-              <motion.div key={member.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass rounded-2xl p-6 text-center">
-                <div className="w-20 h-20 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-2xl font-bold mx-auto mb-4">
+              <motion.div key={member.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass rounded-2xl p-8 text-center max-w-sm w-full shadow-lg">
+                <div className="w-24 h-24 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-3xl font-bold mx-auto mb-5">
                   {member.name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <h3 className="text-lg font-semibold text-dark-900 dark:text-white">{member.name}</h3>
-                <p className="text-sm text-primary-400 font-medium mb-2">{member.role}</p>
-                <p className="text-sm text-dark-600 dark:text-dark-400">{member.bio}</p>
+                <h3 className="text-xl font-bold text-dark-900 dark:text-white">{member.name}</h3>
+                <p className="text-base text-primary-400 font-medium mb-3">{member.role}</p>
+                <p className="text-sm text-dark-600 dark:text-dark-400 leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
           </div>

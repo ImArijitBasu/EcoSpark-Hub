@@ -6,7 +6,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { HiOutlineMenu, HiOutlineX, HiOutlineUser, HiOutlineLogout, HiOutlineViewGrid } from 'react-icons/hi';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
@@ -25,6 +25,14 @@ export default function Navbar() {
 
   const dashboardLink = user?.role === 'ADMIN' ? '/dashboard/admin' : '/dashboard/member';
 
+  // Scroll Progress Hook
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
     <>
       {/* 
@@ -32,8 +40,15 @@ export default function Navbar() {
         we can leave a dummy invisible spacer, but App Layout already has `<main className="pt-16">`
         which might need more padding globally later. Currently it's fine.
       */}
-      <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-[80] rounded-full border border-dark-300/20 dark:border-white/10 bg-white/70 dark:bg-dark-950/60 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300">
-        <div className="px-4 sm:px-6 lg:px-8">
+      <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-[80] rounded-full overflow-hidden border border-dark-300/20 dark:border-white/10 bg-white/70 dark:bg-dark-950/60 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300">
+        
+        {/* Integrated Circular Glowing Bottom Scroll Progress Indicator */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary-500 shadow-[0_-2px_15px_3px_#10b981] z-0"
+          style={{ scaleX, transformOrigin: "0% 50%" }}
+        />
+
+        <div className="px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex items-center justify-between h-16 sm:h-20">
             
             {/* Logo */}
