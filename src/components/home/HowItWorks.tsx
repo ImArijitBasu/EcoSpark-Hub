@@ -10,7 +10,7 @@ const steps = [
     step: '01',
     title: 'Share Your Idea',
     desc: 'Submit your sustainability concept with a clear problem statement, proposed solution, and supporting images.',
-    image: 'https://images.unsplash.com/photo-1456948927036-ad533e532652',
+    image: 'https://images.unsplash.com/photo-1589828994379-7a8869c4f519?q=80&w=912&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     icon: HiOutlineClipboardCheck,
@@ -24,7 +24,7 @@ const steps = [
     step: '03',
     title: 'Community Votes',
     desc: 'Once approved, fellow members upvote and downvote — the best ideas rise to the top.',
-    image: 'https://images.unsplash.com/photo-1529156069898-49953eb1b5ce',
+    image: 'https://images.unsplash.com/photo-1603032813605-2c91e257e2ae?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     icon: HiOutlineSparkles,

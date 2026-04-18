@@ -4,6 +4,9 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollProgress from "@/components/layout/ScrollProgress";
+import BackToTop from "@/components/layout/BackToTop";
+import CustomCursor from "@/components/layout/CustomCursor";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -47,11 +50,14 @@ export default function RootLayout({
               },
             }}
           />
+          <CustomCursor />
+          <ScrollProgress />
           <Navbar />
           <main className="flex-1 pt-16">
             {children}
           </main>
           <Footer />
+          <BackToTop />
         </AuthProvider>
         <Analytics />
         </ThemeProvider>

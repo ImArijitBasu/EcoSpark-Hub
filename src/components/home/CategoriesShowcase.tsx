@@ -13,7 +13,8 @@ const categoryImages: Record<string, string> = {
   transportation: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c',
   water: 'https://images.unsplash.com/photo-1544252899-c7acbf8e2e74',
   agriculture: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449',
-  biodiversity: 'https://images.unsplash.com/photo-1508266946950-7164993132e0',
+  fire: 'https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9',
+  biodiversity: 'https://images.unsplash.com/photo-1629267699730-f7467e129e65?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3',
 };
 
 export default function CategoriesShowcase() {
