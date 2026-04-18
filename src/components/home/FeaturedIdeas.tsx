@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import api from '@/lib/api';
 import { Idea } from '@/types';
@@ -73,10 +74,12 @@ export default function FeaturedIdeas() {
                     {/* Image */}
                     <div className="relative h-48 overflow-hidden bg-dark-800">
                       {idea.images.length > 0 ? (
-                        <img
+                        <Image
                           src={idea.images[0]}
                           alt={idea.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-900/40 to-dark-800">

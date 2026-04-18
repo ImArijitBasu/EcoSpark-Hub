@@ -2,28 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import api from '@/lib/api';
 import { Category } from '@/types';
-import { HiOutlineArrowRight } from 'react-icons/hi';
 
-const fallbackIcons: Record<string, string> = {
-  energy: '⚡',
-  waste: '♻️',
-  transportation: '🚲',
-  water: '💧',
-  agriculture: '🌾',
-  biodiversity: '🌿',
+const categoryImages: Record<string, string> = {
+  energy: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7',
+  waste: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',
+  transportation: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c',
+  water: 'https://images.unsplash.com/photo-1544252899-c7acbf8e2e74',
+  agriculture: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449',
+  biodiversity: 'https://images.unsplash.com/photo-1508266946950-7164993132e0',
 };
-
-const gradients = [
-  'from-emerald-500/20 to-emerald-900/10',
-  'from-blue-500/20 to-blue-900/10',
-  'from-amber-500/20 to-amber-900/10',
-  'from-cyan-500/20 to-cyan-900/10',
-  'from-lime-500/20 to-lime-900/10',
-  'from-teal-500/20 to-teal-900/10',
-];
 
 export default function CategoriesShowcase() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -52,28 +43,36 @@ export default function CategoriesShowcase() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {categories.map((cat, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.slice(0, 6).map((cat, index) => (
             <motion.div
               key={cat.id}
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
+              transition={{ delay: index * 0.1 }}
             >
               <Link
                 href={`/ideas?category=${cat.id}`}
-                className="block glass rounded-2xl p-5 text-center card-hover group h-full"
+                className="block relative rounded-3xl overflow-hidden text-center card-hover group h-72 sm:h-80"
               >
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index % gradients.length]} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform`}>
-                  <span className="text-3xl">{fallbackIcons[cat.slug] || cat.icon || '🌍'}</span>
+                <Image 
+                  src={categoryImages[cat.slug] || 'https://images.unsplash.com/photo-1542601906990-b4d3fb773b09'} 
+                  alt={cat.name} 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-900/40 to-transparent group-hover:from-dark-900 transition-colors duration-500" />
+                
+                <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col items-center justify-end h-full">
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors font-[family-name:var(--font-heading)] drop-shadow-md">
+                    {cat.name}
+                  </h3>
+                  <p className="text-sm text-dark-200 font-medium bg-dark-900/50 px-4 py-1.5 rounded-full backdrop-blur-md">
+                    {cat._count?.ideas || 0} innovative ideas
+                  </p>
                 </div>
-                <h3 className="text-sm font-semibold text-dark-900 dark:text-white group-hover:text-primary-400 transition-colors">
-                  {cat.name}
-                </h3>
-                <p className="text-xs text-dark-500 mt-1">
-                  {cat._count?.ideas || 0} ideas
-                </p>
               </Link>
             </motion.div>
           ))}
