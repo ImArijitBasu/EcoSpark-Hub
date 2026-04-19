@@ -90,6 +90,13 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Mobile: fixed bg causes scroll jank on iOS/Android */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 /* ── Scrollbar ─────────────────────────────── */
 ::-webkit-scrollbar {
   width: 8px;
@@ -118,6 +125,18 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
+}
+
+/* Mobile: reduce expensive backdrop blur */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .glass-light {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
 }
 
 /* ── Glow Effects ──────────────────────────── */
@@ -176,6 +195,35 @@ body {
 
 .animate-pulse-glow {
   animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* ── Mobile Performance: reduce/disable expensive animations ── */
+@media (max-width: 768px) {
+  .hero-gradient {
+    background-size: 200% 200%;
+    animation-duration: 20s;
+  }
+
+  .animate-pulse-glow {
+    animation: none;
+  }
+
+  .animate-float {
+    animation: none;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient,
+  .animate-pulse-glow,
+  .animate-float {
+    animation: none;
+  }
+
+  .card-hover {
+    transition: none;
+  }
 }
 
 /* ── UI Components ─────────────────────────── */

@@ -31,9 +31,9 @@ export default function CallToAction() {
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-transparent mix-blend-overlay" />
           </div>
 
-          {/* Decorative circles */}
-          <div className="absolute -top-10 -right-10 w-60 h-60 bg-primary-400/10 rounded-full blur-2xl" />
-          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent-400/10 rounded-full blur-2xl" />
+          {/* Decorative circles — hidden on mobile */}
+          <div className="hidden md:block absolute -top-10 -right-10 w-60 h-60 bg-primary-400/10 rounded-full blur-2xl" />
+          <div className="hidden md:block absolute -bottom-10 -left-10 w-40 h-40 bg-accent-400/10 rounded-full blur-2xl" />
 
           <div className="relative z-10 p-8 sm:p-12 lg:p-16 text-center">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-[family-name:var(--font-heading)] text-white mb-6 leading-tight drop-shadow-lg">

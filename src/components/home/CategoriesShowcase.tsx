@@ -61,8 +61,9 @@ export default function CategoriesShowcase() {
                   src={categoryImages[cat.slug] || 'https://images.unsplash.com/photo-1542601906990-b4d3fb773b09'} 
                   alt={cat.name} 
                   fill 
-                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  sizes="(max-width: 640px) 95vw, (max-width: 768px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-900/40 to-transparent group-hover:from-dark-900 transition-colors duration-500" />
                 

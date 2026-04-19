@@ -40,7 +40,7 @@ export default function Navbar() {
         we can leave a dummy invisible spacer, but App Layout already has `<main className="pt-16">`
         which might need more padding globally later. Currently it's fine.
       */}
-      <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-[80] rounded-full overflow-hidden border border-dark-300/20 dark:border-white/10 bg-white/70 dark:bg-dark-950/60 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300">
+      <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-[80] rounded-full overflow-hidden border border-dark-300/20 dark:border-white/10 bg-white/70 dark:bg-dark-950/60 backdrop-blur-lg md:backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300">
         
         {/* Integrated Circular Glowing Bottom Scroll Progress Indicator */}
         <motion.div

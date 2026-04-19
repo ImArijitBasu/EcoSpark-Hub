@@ -25,13 +25,13 @@ export default function HeroBanner() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-dark-950)_0%,_transparent_100%)] opacity-0 dark:opacity-40 z-0 mix-blend-multiply" />
       <div className="absolute inset-0 bg-black/10 dark:bg-black/30 z-0" />
 
-      {/* Heroic Deep Ambient Glows */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-glow" style={{ animationDuration: '8s' }} />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent-500/15 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-glow" style={{ animationDuration: '10s', animationDelay: '1s' }} />
+      {/* Heroic Deep Ambient Glows — hidden on mobile (GPU-killer with blur-[120px] on 800px elements) */}
+      <div className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-primary-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-glow" style={{ animationDuration: '8s' }} />
+      <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent-500/15 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-glow" style={{ animationDuration: '10s', animationDelay: '1s' }} />
 
-      {/* Grid Overlay */}
+      {/* Grid Overlay — hidden on mobile to reduce paint area */}
       <div
-        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] z-0"
+        className="hidden sm:block absolute inset-0 opacity-[0.03] dark:opacity-[0.07] z-0"
         style={{
           backgroundImage: 'linear-gradient(rgba(16,185,129,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.5) 1px, transparent 1px)',
           backgroundSize: '80px 80px',
