@@ -58,7 +58,7 @@ export default function CategoriesShowcase() {
                 className="block relative rounded-3xl overflow-hidden text-center card-hover group h-72 sm:h-80"
               >
                 <Image 
-                  src={categoryImages[cat.slug] || 'https://images.unsplash.com/photo-1542601906990-b4d3fb773b09'} 
+                  src={cat.miniImage || cat.bannerImage || categoryImages[cat.slug] || 'https://images.unsplash.com/photo-1542601906990-b4d3fb773b09'} 
                   alt={cat.name} 
                   fill 
                   loading="lazy"

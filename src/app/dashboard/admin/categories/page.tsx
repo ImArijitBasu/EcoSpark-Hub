@@ -11,7 +11,7 @@ export default function AdminCategoriesPage() {
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState<'create' | 'edit' | null>(null);
   const [editId, setEditId] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: '', description: '', icon: '' });
+  const [form, setForm] = useState<{name: string, description: string, icon: string, miniImage: File | null, bannerImage: File | null}>({ name: '', description: '', icon: '', miniImage: null, bannerImage: null });
 
   useEffect(() => { fetchCategories(); }, []);
 
@@ -24,13 +24,13 @@ export default function AdminCategoriesPage() {
   };
 
   const openCreate = () => {
-    setForm({ name: '', description: '', icon: '' });
+    setForm({ name: '', description: '', icon: '', miniImage: null, bannerImage: null });
     setEditId(null);
     setModal('create');
   };
 
   const openEdit = (cat: Category) => {
-    setForm({ name: cat.name, description: cat.description || '', icon: cat.icon || '' });
+    setForm({ name: cat.name, description: cat.description || '', icon: cat.icon || '', miniImage: null, bannerImage: null });
     setEditId(cat.id);
     setModal('edit');
   };
@@ -40,12 +40,20 @@ export default function AdminCategoriesPage() {
       toast.error('Category name is required');
       return;
     }
+    
+    const formData = new FormData();
+    formData.append('name', form.name);
+    if (form.description) formData.append('description', form.description);
+    if (form.icon) formData.append('icon', form.icon);
+    if (form.miniImage) formData.append('miniImage', form.miniImage);
+    if (form.bannerImage) formData.append('bannerImage', form.bannerImage);
+
     try {
       if (modal === 'create') {
-        await api.post('/categories', form);
+        await api.post('/categories', formData, { headers: { 'Content-Type': 'multipart/form-data' }});
         toast.success('Category created!');
       } else {
-        await api.patch(`/categories/${editId}`, form);
+        await api.patch(`/categories/${editId}`, formData, { headers: { 'Content-Type': 'multipart/form-data' }});
         toast.success('Category updated!');
       }
       setModal(null);
@@ -86,7 +94,15 @@ export default function AdminCategoriesPage() {
           {categories.map((cat) => (
             <div key={cat.id} className="glass rounded-2xl p-5 flex items-start justify-between">
               <div className="flex items-start gap-3">
-                <span className="text-2xl">{cat.icon || '📂'}</span>
+                <div className="w-12 h-12 rounded-xl overflow-hidden bg-dark-100 flex items-center justify-center relative shadow-inner">
+                  {cat.miniImage ? (
+                    <img src={cat.miniImage} alt={cat.name} className="w-full h-full object-cover" />
+                  ) : cat.icon ? (
+                    <span className="text-2xl">{cat.icon}</span>
+                  ) : (
+                    <span className="text-xl">📂</span>
+                  )}
+                </div>
                 <div>
                   <h3 className="text-sm font-semibold text-dark-900 dark:text-white">{cat.name}</h3>
                   <p className="text-xs text-dark-500 mt-0.5">{cat.description || 'No description'}</p>
@@ -131,6 +147,16 @@ export default function AdminCategoriesPage() {
               <div>
                 <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Icon (emoji)</label>
                 <input value={form.icon} onChange={e => setForm({...form, icon: e.target.value})} className="input-glass" placeholder="⚡" />
+              </div>
+              <div className="flex flex-col gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Mini Card Image</label>
+                  <input type="file" accept="image/*" onChange={e => setForm({...form, miniImage: e.target.files?.[0] || null})} className="w-full text-sm text-dark-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-500/10 file:text-primary-500 hover:file:bg-primary-500/20 transition-all cursor-pointer" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Banner Background Image</label>
+                  <input type="file" accept="image/*" onChange={e => setForm({...form, bannerImage: e.target.files?.[0] || null})} className="w-full text-sm text-dark-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-500/10 file:text-primary-500 hover:file:bg-primary-500/20 transition-all cursor-pointer" />
+                </div>
               </div>
             </div>
 

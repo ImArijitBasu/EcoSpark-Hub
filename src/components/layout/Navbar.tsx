@@ -35,18 +35,16 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 
-        To prevent content from hiding under the fixed detached navbar,
-        we can leave a dummy invisible spacer, but App Layout already has `<main className="pt-16">`
-        which might need more padding globally later. Currently it's fine.
-      */}
-      <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-[80] rounded-full overflow-hidden border border-dark-300/20 dark:border-white/10 bg-white/70 dark:bg-dark-950/60 backdrop-blur-lg md:backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300">
+      <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-[80] transition-all duration-300">
         
-        {/* Integrated Circular Glowing Bottom Scroll Progress Indicator */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary-500 shadow-[0_-2px_15px_3px_#10b981] z-0"
-          style={{ scaleX, transformOrigin: "0% 50%" }}
-        />
+        {/* Background & Progress Bar Container (with overflow-hidden for rounded corners) */}
+        <div className="absolute inset-0 rounded-full overflow-hidden border border-dark-300/20 dark:border-white/10 bg-white/70 dark:bg-dark-950/60 backdrop-blur-lg md:backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] z-0">
+          {/* Integrated Circular Glowing Bottom Scroll Progress Indicator */}
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary-500 shadow-[0_-2px_15px_3px_#10b981]"
+            style={{ scaleX, transformOrigin: "0% 50%" }}
+          />
+        </div>
 
         <div className="px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex items-center justify-between h-16 sm:h-20">
@@ -152,7 +150,7 @@ export default function Navbar() {
                             Command Center
                           </Link>
                           <Link
-                            href="/dashboard/member"
+                            href={`${dashboardLink}/profile`}
                             onClick={() => setProfileDropdown(false)}
                             className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-dark-700 dark:text-dark-200 hover:text-primary-600 dark:hover:text-white hover:bg-dark-100 dark:hover:bg-white/10 rounded-2xl transition-all"
                           >
@@ -260,9 +258,16 @@ export default function Navbar() {
                     <Link
                       href={dashboardLink}
                       onClick={() => setMobileMenuOpen(false)}
+                      className="btn-secondary w-full text-center py-3 rounded-xl border-white/10 mt-3"
+                    >
+                      Command Center
+                    </Link>
+                    <Link
+                      href={`${dashboardLink}/profile`}
+                      onClick={() => setMobileMenuOpen(false)}
                       className="btn-secondary w-full text-center py-3 rounded-xl border-white/10"
                     >
-                      Dashboard
+                      Identity Profile
                     </Link>
                     <button
                       onClick={() => {

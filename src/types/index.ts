@@ -20,6 +20,8 @@ export interface Category {
   slug: string;
   description: string | null;
   icon: string | null;
+  miniImage?: string | null;
+  bannerImage?: string | null;
   createdAt: string;
   _count?: {
     ideas: number;

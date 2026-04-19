@@ -11,7 +11,9 @@ import Newsletter from '@/components/home/Newsletter';
 export default function HomePage() {
   return (
     <>
-      <HeroBanner />
+      <div className="-mt-16">
+        <HeroBanner />
+      </div>
       <HowItWorks />
       <CategoriesShowcase />
       <FeaturedIdeas />

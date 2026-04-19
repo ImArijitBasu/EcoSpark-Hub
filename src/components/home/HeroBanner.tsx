@@ -76,7 +76,7 @@ export default function HeroBanner() {
             cats.slice(0, 6).map(cat => ({
               title: cat.name,
               subtitle: `${cat._count?.ideas || 0} innovative ideas`,
-              image: categoryImages[cat.slug] || defaultImage,
+              image: cat.bannerImage || categoryImages[cat.slug] || defaultImage,
               href: `/ideas?category=${cat.id}`,
               count: cat._count?.ideas || 0,
             }))
