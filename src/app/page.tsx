@@ -3,6 +3,7 @@
 import HeroBanner from '@/components/home/HeroBanner';
 import HowItWorks from '@/components/home/HowItWorks';
 import CategoriesShowcase from '@/components/home/CategoriesShowcase';
+import StatsCounter from '@/components/home/StatsCounter';
 import FeaturedIdeas from '@/components/home/FeaturedIdeas';
 import Testimonials from '@/components/home/Testimonials';
 import CallToAction from '@/components/home/CallToAction';
@@ -16,6 +17,7 @@ export default function HomePage() {
       </div>
       <HowItWorks />
       <CategoriesShowcase />
+      <StatsCounter />
       <FeaturedIdeas />
       <Testimonials />
       <CallToAction />

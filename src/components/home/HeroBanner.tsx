@@ -130,7 +130,7 @@ export default function HeroBanner() {
   };
 
   return (
-    <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[65vh] min-h-[500px] max-h-[800px] flex items-center justify-center overflow-hidden">
       {/* ── Fullscreen Background Image Slider ── */}
       <AnimatePresence mode="popLayout">
         <motion.div

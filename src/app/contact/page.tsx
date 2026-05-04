@@ -3,15 +3,31 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
-import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from 'react-icons/hi';
+import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker, HiOutlineCheckCircle } from 'react-icons/hi';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.name || !form.email || !form.subject || !form.message) {
+      toast.error('Please fill in all required fields.');
+      return;
+    }
+    setLoading(true);
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setLoading(false);
+    setSuccess(true);
     toast.success('Message sent! We\'ll get back to you soon.');
     setForm({ name: '', email: '', subject: '', message: '' });
+
+    // Reset success state after a few seconds
+    setTimeout(() => setSuccess(false), 5000);
   };
 
   return (
@@ -51,25 +67,41 @@ export default function ContactPage() {
             onSubmit={handleSubmit}
             className="lg:col-span-2 glass rounded-2xl p-6 sm:p-8 space-y-5"
           >
+            {success && (
+              <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 p-4 rounded-xl flex items-center gap-3">
+                <HiOutlineCheckCircle className="w-5 h-5 flex-shrink-0" />
+                <p className="text-sm font-medium">Thank you! Your message has been successfully sent.</p>
+              </div>
+            )}
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Name</label>
-                <input value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="input-glass" required />
+                <input value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="input-glass" required disabled={loading} />
               </div>
               <div>
                 <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Email</label>
-                <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="input-glass" required />
+                <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="input-glass" required disabled={loading} />
               </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Subject</label>
-              <input value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} className="input-glass" required />
+              <input value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} className="input-glass" required disabled={loading} />
             </div>
             <div>
               <label className="block text-sm font-medium text-dark-600 dark:text-dark-300 mb-1.5">Message</label>
-              <textarea value={form.message} onChange={e => setForm({...form, message: e.target.value})} rows={5} className="input-glass resize-none" required />
+              <textarea value={form.message} onChange={e => setForm({...form, message: e.target.value})} rows={5} className="input-glass resize-none" required disabled={loading} />
             </div>
-            <button type="submit" className="btn-primary w-full py-3 cursor-pointer">Send Message</button>
+            <button type="submit" disabled={loading} className="btn-primary w-full py-3 cursor-pointer flex items-center justify-center gap-2">
+              {loading ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                'Send Message'
+              )}
+            </button>
           </motion.form>
         </div>
       </div>

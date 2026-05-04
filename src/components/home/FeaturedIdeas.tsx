@@ -19,7 +19,7 @@ export default function FeaturedIdeas() {
 
   const fetchFeatured = async () => {
     try {
-      const res = await api.get('/ideas/featured?count=6');
+      const res = await api.get('/ideas/featured?count=8');
       setIdeas(res.data.data);
     } catch {
       // Silently fail - show empty state
@@ -49,8 +49,8 @@ export default function FeaturedIdeas() {
 
         {/* Ideas Grid */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {[...Array(8)].map((_, i) => (
               <div key={i} className="glass rounded-2xl p-6 animate-pulse">
                 <div className="h-40 bg-dark-700/50 rounded-xl mb-4" />
                 <div className="h-4 bg-dark-700/50 rounded w-3/4 mb-2" />
@@ -60,7 +60,7 @@ export default function FeaturedIdeas() {
             ))}
           </div>
         ) : ideas.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {ideas.map((idea, index) => (
               <motion.div
                 key={idea.id}
@@ -107,12 +107,12 @@ export default function FeaturedIdeas() {
                       </p>
 
                       {/* Footer */}
-                      <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                      <div className="flex items-center justify-between pt-3 border-t border-white/5 mb-3">
                         <div className="flex items-center gap-1 text-sm text-dark-600 dark:text-dark-400">
                           <span className="w-6 h-6 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-xs font-semibold">
                             {idea.author.name.charAt(0)}
                           </span>
-                          <span className="ml-1">{idea.author.name}</span>
+                          <span className="ml-1 truncate max-w-[80px]">{idea.author.name}</span>
                         </div>
                         <div className="flex items-center gap-3 text-xs text-dark-500">
                           <span className="flex items-center gap-1">
@@ -125,6 +125,11 @@ export default function FeaturedIdeas() {
                           </span>
                         </div>
                       </div>
+
+                      {/* View Details Button */}
+                      <button className="w-full py-2 rounded-xl border border-primary-500/30 text-primary-500 dark:text-primary-400 font-semibold text-sm hover:bg-primary-500/10 transition-colors flex items-center justify-center gap-2 group-hover:bg-primary-500 group-hover:text-white">
+                        View Details <HiOutlineArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </button>
                     </div>
                   </div>
                 </Link>

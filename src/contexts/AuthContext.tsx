@@ -1,9 +1,8 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import Cookies from 'js-cookie';
-import api from '@/lib/api';
-import { User, AuthResponse } from '@/types';
+import { createContext, useContext, ReactNode } from 'react';
+import { useSession, signIn, signUp, signOut } from '@/lib/auth-client';
+import { User } from '@/types';
 
 interface AuthContextType {
   user: User | null;
@@ -11,65 +10,37 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
-  logout: () => void;
+  logout: () => Promise<void>;
   updateUser: (user: User) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data: session, isPending } = useSession();
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
-    try {
-      const token = Cookies.get('accessToken');
-      if (!token) {
-        setLoading(false);
-        return;
-      }
-
-      const response = await api.get('/auth/me');
-      setUser(response.data.data);
-    } catch {
-      Cookies.remove('accessToken');
-      Cookies.remove('refreshToken');
-      setUser(null);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Typecast to our internal User type to avoid breaking existing components
+  const user = (session?.user as unknown as User) || null;
+  const loading = isPending;
 
   const login = async (email: string, password: string) => {
-    const response = await api.post('/auth/login', { email, password });
-    const data: AuthResponse = response.data.data;
-
-    Cookies.set('accessToken', data.accessToken, { expires: 1 });
-    Cookies.set('refreshToken', data.refreshToken, { expires: 7 });
-    setUser(data.user);
+    const { data, error } = await signIn.email({ email, password });
+    if (error) throw new Error(error.message || 'Login failed');
   };
 
   const register = async (name: string, email: string, password: string) => {
-    const response = await api.post('/auth/register', { name, email, password });
-    const data: AuthResponse = response.data.data;
-
-    Cookies.set('accessToken', data.accessToken, { expires: 1 });
-    Cookies.set('refreshToken', data.refreshToken, { expires: 7 });
-    setUser(data.user);
+    const { data, error } = await signUp.email({ name, email, password });
+    if (error) throw new Error(error.message || 'Registration failed');
   };
 
-  const logout = () => {
-    Cookies.remove('accessToken');
-    Cookies.remove('refreshToken');
-    setUser(null);
+  const logout = async () => {
+    await signOut();
+    window.location.href = '/login'; // Force redirect to clear app state
   };
 
   const updateUser = (updatedUser: User) => {
-    setUser(updatedUser);
+    // With Better Auth, session is managed by the library. 
+    // Usually you call a refetch or the library updates it automatically.
   };
 
   return (

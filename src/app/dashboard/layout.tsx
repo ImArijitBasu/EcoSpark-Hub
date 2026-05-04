@@ -23,6 +23,7 @@ const adminLinks = [
   { href: '/dashboard/admin/ideas', label: 'Manage Ideas', icon: HiOutlineClipboardCheck },
   { href: '/dashboard/admin/members', label: 'Manage Members', icon: HiOutlineUsers },
   { href: '/dashboard/admin/categories', label: 'Categories', icon: HiOutlineTag },
+  { href: '/dashboard/admin/profile', label: 'Profile', icon: HiOutlineCog },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -51,7 +52,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
-      <aside className="hidden lg:flex w-64 flex-col glass border-r border-white/5 fixed top-16 bottom-0 left-0 z-40">
+      <aside className="hidden lg:flex w-64 flex-col glass border-r border-white/5 fixed top-28 bottom-0 left-0 z-40 rounded-tr-xl">
         <div className="p-4 border-b border-white/5">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center text-dark-900 dark:text-white font-bold">
@@ -113,7 +114,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 lg:ml-64">
+      <div className="flex-1 mt-10 lg:ml-64">
         <div className="p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8">
           {children}
         </div>

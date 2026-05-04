@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import api from '@/lib/api';
 import { Idea, Category } from '@/types';
 import { truncate } from '@/lib/utils';
-import { HiOutlineSearch, HiOutlineThumbUp, HiOutlineChatAlt2, HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import { HiOutlineSearch, HiOutlineThumbUp, HiOutlineChatAlt2, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineArrowRight } from 'react-icons/hi';
 
 export default function IdeasPage() {
   return (
@@ -232,18 +232,23 @@ function IdeasContent() {
                         </h3>
                         <p className="text-sm text-dark-600 dark:text-dark-400 mb-4 line-clamp-2">{truncate(idea.description, 100)}</p>
 
-                        <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                        <div className="flex items-center justify-between pt-3 border-t border-white/5 mb-3">
                           <div className="flex items-center gap-2 text-sm text-dark-600 dark:text-dark-400">
                             <span className="w-6 h-6 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-xs font-semibold">
                               {idea.author.name.charAt(0)}
                             </span>
-                            <span>{idea.author.name}</span>
+                            <span className="truncate max-w-[80px]">{idea.author.name}</span>
                           </div>
                           <div className="flex items-center gap-3 text-xs text-dark-500">
                             <span className="flex items-center gap-1"><HiOutlineThumbUp className="w-3.5 h-3.5" />{idea.upvoteCount}</span>
                             <span className="flex items-center gap-1"><HiOutlineChatAlt2 className="w-3.5 h-3.5" />{idea.commentCount}</span>
                           </div>
                         </div>
+
+                        {/* View Details Button */}
+                        <button className="w-full py-2 rounded-xl border border-primary-500/30 text-primary-500 dark:text-primary-400 font-semibold text-sm hover:bg-primary-500/10 transition-colors flex items-center justify-center gap-2 group-hover:bg-primary-500 group-hover:text-white">
+                          View Details <HiOutlineArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </button>
                       </div>
                     </div>
                   </Link>

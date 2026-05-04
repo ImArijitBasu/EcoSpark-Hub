@@ -4,15 +4,18 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { signIn } from '@/lib/auth-client';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
 import { HiOutlineMail, HiOutlineLockClosed, HiOutlineEye, HiOutlineEyeOff, HiLightningBolt } from 'react-icons/hi';
+import { FcGoogle } from 'react-icons/fc';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const { login } = useAuth();
   const router = useRouter();
 
@@ -38,6 +41,22 @@ export default function LoginPage() {
     setEmail('admin@ecosparkhub.com');
     setPassword('Admin@123456');
     toast.success('Admin credentials autofilled!');
+  };
+
+  const handleAutofillMember = () => {
+    setEmail('member@ecosparkhub.com');
+    setPassword('Member@123456');
+    toast.success('Member credentials autofilled!');
+  };
+
+  const handleGoogleLogin = async () => {
+    setGoogleLoading(true);
+    try {
+      await signIn.social({ provider: 'google', callbackURL: `${window.location.origin}/` });
+    } catch (error: any) {
+      toast.error('Google login failed');
+      setGoogleLoading(false);
+    }
   };
 
   return (
@@ -133,7 +152,7 @@ export default function LoginPage() {
               {/* Submit */}
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || googleLoading}
                 className="btn-primary w-full py-3.5 text-center flex items-center justify-center gap-2 mt-4 disabled:opacity-50 cursor-pointer text-base"
               >
                 {loading ? (
@@ -142,16 +161,47 @@ export default function LoginPage() {
                   'Sign In'
                 )}
               </button>
+
+              <div className="relative flex items-center py-2">
+                <div className="flex-grow border-t border-dark-200 dark:border-white/10"></div>
+                <span className="flex-shrink-0 mx-4 text-dark-400 text-xs">Or continue with</span>
+                <div className="flex-grow border-t border-dark-200 dark:border-white/10"></div>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                disabled={loading || googleLoading}
+                className="w-full py-3.5 px-4 flex items-center justify-center gap-3 bg-white dark:bg-dark-800 border border-dark-200 dark:border-white/10 rounded-xl hover:bg-dark-50 dark:hover:bg-dark-700 transition-colors cursor-pointer text-dark-900 dark:text-white font-medium shadow-sm"
+              >
+                {googleLoading ? (
+                  <div className="w-5 h-5 border-2 border-primary-500/30 border-t-primary-500 rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <FcGoogle className="w-5 h-5" />
+                    Sign in with Google
+                  </>
+                )}
+              </button>
             </form>
 
-            <div className="flex flex-col items-center gap-4 mt-8 pt-6 border-t border-dark-200 dark:border-white/10">
-              <button 
-                type="button" 
-                onClick={handleAutofillAdmin}
-                className="text-sm font-semibold text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 transition-colors cursor-pointer flex items-center gap-2"
-              >
-                <HiLightningBolt className="w-4 h-4" /> Autofill Admin Credentials
-              </button>
+            <div className="flex flex-col items-center gap-3 mt-8 pt-6 border-t border-dark-200 dark:border-white/10">
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <button 
+                  type="button" 
+                  onClick={handleAutofillAdmin}
+                  className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-primary-500/10 text-primary-600 hover:bg-primary-500/20 dark:text-primary-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                >
+                  <HiLightningBolt className="w-3.5 h-3.5" /> Admin Demo
+                </button>
+                <button 
+                  type="button" 
+                  onClick={handleAutofillMember}
+                  className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-accent-500/10 text-accent-600 hover:bg-accent-500/20 dark:text-accent-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                >
+                  <HiLightningBolt className="w-3.5 h-3.5" /> Member Demo
+                </button>
+              </div>
               
               <p className="text-center text-sm text-dark-600 dark:text-dark-400">
                 Don&apos;t have an account?{' '}

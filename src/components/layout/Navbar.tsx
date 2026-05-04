@@ -14,6 +14,7 @@ const navLinks = [
   { href: '/ideas', label: 'Ideas' },
   { href: '/about', label: 'About Us' },
   { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
