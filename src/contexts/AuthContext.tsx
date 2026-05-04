@@ -35,7 +35,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     await signOut();
-    window.location.href = '/login'; // Force redirect to clear app state
+    window.location.href = '/'; // Force redirect to clear app state
   };
 
   const updateUser = (updatedUser: User) => {
