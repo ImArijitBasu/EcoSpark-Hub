@@ -18,7 +18,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, loading, logout } = useAuth();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
@@ -112,7 +112,13 @@ export default function Navbar() {
                 <ThemeToggle />
               </div>
               
-              {isAuthenticated ? (
+              {loading ? (
+                /* Skeleton placeholder while session loads — prevents flash of Login/Sign Up */
+                <div className="flex items-center gap-2 pl-2 pr-4 py-1.5 rounded-full bg-dark-100/80 dark:bg-dark-900/80 border border-dark-200 dark:border-white/10 animate-pulse">
+                  <div className="w-8 h-8 rounded-full bg-dark-300/50 dark:bg-white/10" />
+                  <div className="w-16 h-4 rounded-full bg-dark-300/50 dark:bg-white/10" />
+                </div>
+              ) : isAuthenticated ? (
                 <div className="relative">
                   <button
                     onClick={() => setProfileDropdown(!profileDropdown)}
@@ -245,7 +251,16 @@ export default function Navbar() {
               })}
 
               <div className="pt-4 pb-2 px-2 mt-4 border-t border-white/10 flex flex-col gap-3">
-                {isAuthenticated ? (
+                {loading ? (
+                  /* Skeleton placeholder for mobile */
+                  <div className="flex items-center gap-3 mb-2 p-2 rounded-xl bg-dark-100 dark:bg-white/5 animate-pulse">
+                    <div className="w-10 h-10 rounded-full bg-dark-300/50 dark:bg-white/10" />
+                    <div className="space-y-2">
+                      <div className="w-24 h-4 rounded-full bg-dark-300/50 dark:bg-white/10" />
+                      <div className="w-16 h-3 rounded-full bg-dark-300/50 dark:bg-white/10" />
+                    </div>
+                  </div>
+                ) : isAuthenticated ? (
                   <>
                     <div className="flex items-center gap-3 mb-2 p-2 rounded-xl bg-dark-100 dark:bg-white/5">
                       <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center text-dark-900 dark:text-white text-lg font-bold">
