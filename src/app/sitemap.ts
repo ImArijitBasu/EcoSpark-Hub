@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 
+export const revalidate = 3600; // Regenerate sitemap every hour
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
@@ -28,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     // Dynamic fetching of all recent ideas to inject into the Google sitemap
-    const res = await fetch(`${apiUrl}/ideas?limit=100`, { cache: 'no-store' });
+    const res = await fetch(`${apiUrl}/ideas?limit=100`, { next: { revalidate: 3600 } });
     const data = await res.json();
     
     if (data.data && Array.isArray(data.data)) {
@@ -47,3 +49,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return routes;
 }
+
