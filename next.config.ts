@@ -19,14 +19,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Proxy /api/auth/* through Next.js so session cookies are set on the
-  // same origin (first-party). This prevents cross-domain cookie blocking
-  // when the frontend (Vercel) and backend (Render etc.) are on different domains.
+  // Proxy all /api/* requests through Next.js so session cookies are sent
+  // securely to the backend on the same origin (first-party). This prevents 
+  // cross-domain cookie blocking when the frontend and backend are on different domains.
   async rewrites() {
     return [
       {
-        source: "/api/auth/:path*",
-        destination: `${API_BASE}/api/auth/:path*`,
+        source: "/api/:path*",
+        destination: `${API_BASE}/api/:path*`,
       },
     ];
   },

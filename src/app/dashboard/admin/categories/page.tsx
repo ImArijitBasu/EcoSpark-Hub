@@ -11,6 +11,7 @@ export default function AdminCategoriesPage() {
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState<'create' | 'edit' | null>(null);
   const [editId, setEditId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
   const [form, setForm] = useState<{name: string, description: string, icon: string, miniImage: File | null, bannerImage: File | null}>({ name: '', description: '', icon: '', miniImage: null, bannerImage: null });
 
   useEffect(() => { fetchCategories(); }, []);
@@ -41,6 +42,7 @@ export default function AdminCategoriesPage() {
       return;
     }
     
+    setSaving(true);
     const formData = new FormData();
     formData.append('name', form.name);
     if (form.description) formData.append('description', form.description);
@@ -60,6 +62,8 @@ export default function AdminCategoriesPage() {
       fetchCategories();
     } catch (err: any) {
       toast.error(err.response?.data?.message || 'Failed');
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -161,9 +165,16 @@ export default function AdminCategoriesPage() {
             </div>
 
             <div className="flex gap-3 mt-6">
-              <button onClick={() => setModal(null)} className="btn-secondary flex-1 cursor-pointer">Cancel</button>
-              <button onClick={handleSubmit} className="btn-primary flex-1 cursor-pointer">
-                {modal === 'create' ? 'Create' : 'Save Changes'}
+              <button onClick={() => setModal(null)} disabled={saving} className="btn-secondary flex-1 cursor-pointer disabled:opacity-50">Cancel</button>
+              <button onClick={handleSubmit} disabled={saving} className="btn-primary flex-1 cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2">
+                {saving ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  modal === 'create' ? 'Create' : 'Save Changes'
+                )}
               </button>
             </div>
           </div>
