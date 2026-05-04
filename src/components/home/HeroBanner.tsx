@@ -14,40 +14,40 @@ const fallbackSlides = [
   {
     title: 'Clean Energy',
     subtitle: 'Power the future with renewable solutions',
-    image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1600&q=80',
+    image: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/energy_w6pxpz.jpg',
     href: '/ideas',
   },
   {
     title: 'Water Conservation',
     subtitle: 'Preserve our most precious resource',
-    image: 'https://images.unsplash.com/photo-1544252899-c7acbf8e2e74?w=1600&q=80',
+    image: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777903414/water_dyho43.jpg',
     href: '/ideas',
   },
   {
     title: 'Green Transport',
     subtitle: 'Sustainable mobility for everyone',
-    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1600&q=80',
+    image: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/transportation_bq1aq5.jpg',
     href: '/ideas',
   },
   {
     title: 'Zero Waste',
     subtitle: 'Rethink, reduce, and reimagine',
-    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1600&q=80',
+    image: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/waste_waa5np.jpg',
     href: '/ideas',
   },
 ];
 
 const categoryImages: Record<string, string> = {
-  energy: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1600&q=80',
-  waste: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1600&q=80',
-  transportation: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1600&q=80',
-  water: 'https://images.unsplash.com/photo-1544252899-c7acbf8e2e74?w=1600&q=80',
-  agriculture: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=80',
-  fire: 'https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?w=1600&q=80',
-  biodiversity: 'https://images.unsplash.com/photo-1629267699730-f7467e129e65?w=1600&q=80',
+  energy: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/energy_w6pxpz.jpg',
+  waste: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/waste_waa5np.jpg',
+  transportation: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/transportation_bq1aq5.jpg',
+  water: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777903414/water_dyho43.jpg',
+  agriculture: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/agriculture_x65t0e.jpg',
+  fire: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777903004/fire_rjwac2.jpg',
+  biodiversity: 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/biodiversity_xnr85p.jpg',
 };
 
-const defaultImage = 'https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?w=1600&q=80';
+const defaultImage = 'https://res.cloudinary.com/dvrmumxjm/image/upload/v1777902998/biodiversity_xnr85p.jpg';
 
 interface Slide {
   title: string;
@@ -130,7 +130,7 @@ export default function HeroBanner() {
   };
 
   return (
-    <section className="relative h-[65vh] min-h-[500px] max-h-[800px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[70vh] min-h-[650px] max-h-[800px] flex items-center justify-center overflow-hidden pt-96 pb-12">
       {/* ── Fullscreen Background Image Slider ── */}
       <AnimatePresence mode="popLayout">
         <motion.div
@@ -146,7 +146,7 @@ export default function HeroBanner() {
             src={currentSlide.image}
             alt={currentSlide.title}
             fill
-            priority={activeIndex === 0}
+            priority
             className="object-cover"
             sizes="100vw"
           />
@@ -173,7 +173,7 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 mb-8 text-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 mb-4 text-sm"
         >
           <HiOutlineSparkles className="w-4 h-4 text-accent-400" />
           <span className="text-white/80">Community-Powered Sustainability</span>
@@ -184,7 +184,7 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-extrabold font-[family-name:var(--font-heading)] leading-tight mb-6"
+          className="text-3xl sm:text-4xl md:text-6xl font-extrabold font-[family-name:var(--font-heading)] leading-tight mb-4"
         >
           <span className="text-white">Spark the Future</span>
           <br />
